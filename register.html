@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration - Sports Club</title>
+  <!-- Loads an external stylesheet/resource. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Page structure/content element. -->
+  <main class="auth-page">
+    <!-- Page structure/content element. -->
+    <section class="auth-card">
+      <!-- Interactive control/link. -->
+      <a class="back-link" href="login.html">← Back to Sign In</a>
+      <span class="badge">NEW STUDENT</span>
+      <!-- Page structure/content element. -->
+      <h1>Create your student account</h1>
+      <!-- Page structure/content element. -->
+      <p class="muted">Enter your information and choose the sport and position you want to register for.</p>
+
+      <!-- Defines a form for user input. -->
+      <form id="registrationForm" class="form-grid">
+        <!-- Page structure/content element. -->
+        <h3 class="form-section-title">Personal information</h3>
+
+        <label for="reg_name">Full Name</label>
+        <!-- Form control used to collect input. -->
+        <input id="reg_name" name="name" type="text" maxlength="100" required autocomplete="name">
+
+        <label for="reg_phone">Phone</label>
+        <!-- Form control used to collect input. -->
+        <input id="reg_phone" name="phone" type="tel" maxlength="20" required autocomplete="tel">
+
+        <label for="reg_email">Email</label>
+        <!-- Form control used to collect input. -->
+        <input id="reg_email" name="email" type="email" maxlength="120" required autocomplete="email">
+
+        <label for="reg_password">Password</label>
+        <!-- Form control used to collect input. -->
+        <input id="reg_password" name="password" type="password" minlength="8" required autocomplete="new-password">
+        <small class="muted">Minimum 8 characters.</small>
+
+        <label for="reg_age">Age</label>
+        <!-- Form control used to collect input. -->
+        <input id="reg_age" name="age" type="number" min="5" max="100" required>
+
+        <label for="reg_blood_group">Blood Group</label>
+        <!-- Form control used to collect input. -->
+        <select id="reg_blood_group" name="blood_group" required>
+          <option value="">Select blood group</option>
+          <option>A+</option><option>A-</option>
+          <option>B+</option><option>B-</option>
+          <option>AB+</option><option>AB-</option>
+          <option>O+</option><option>O-</option>
+        </select>
+
+        <label for="reg_weight">Weight (kg)</label>
+        <!-- Form control used to collect input. -->
+        <input id="reg_weight" name="weight_kg" type="number" min="1" max="500" step="0.1">
+
+        <label for="reg_height">Height (cm)</label>
+        <!-- Form control used to collect input. -->
+        <input id="reg_height" name="height_cm" type="number" min="30" max="300" step="0.1">
+
+        <label for="reg_attributes">Physical Attributes</label>
+        <!-- Form control used to collect input. -->
+        <textarea id="reg_attributes" name="physical_attributes" rows="3" placeholder="Optional"></textarea>
+
+        <!-- Page structure/content element. -->
+        <h3 class="form-section-title">Sport registration</h3>
+
+        <label for="reg_sport">Sport</label>
+        <!-- Form control used to collect input. -->
+        <select id="reg_sport" name="sport_id" required>
+          <option value="">Loading sports...</option>
+        </select>
+
+        <label for="reg_position">Position / Role</label>
+        <!-- Form control used to collect input. -->
+        <select id="reg_position" name="position_id" required disabled>
+          <option value="">Choose a sport first</option>
+        </select>
+
+        <!-- Page structure/content element. -->
+        <div id="sportExtras" class="stack"></div>
+
+        <!-- Interactive control/link. -->
+        <button class="btn primary full" type="submit">Create Student Account</button>
+        <!-- Page structure/content element. -->
+        <div id="registrationMessage" class="message hidden"></div>
+      </form>
+
+      <!-- Page structure/content element. -->
+      <div id="registrationSuccess" class="demo-box hidden"></div>
+    </section>
+  </main>
+
+  <!-- Loads JavaScript for the page. -->
+  <script src="theme.js"></script>
+  <!-- Loads JavaScript for the page. -->
+  <script src="app.js"></script>
+  <!-- Loads JavaScript for the page. -->
+  <script>
+    document.addEventListener('DOMContentLoaded', initRegistration);
+  </script>
+</body>
+</html>

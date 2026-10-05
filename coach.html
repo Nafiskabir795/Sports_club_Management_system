@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coach Dashboard</title>
+  <!-- Loads an external stylesheet/resource. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="coach-v3">
+<button id="coachMenuToggle" class="btn coach-menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰ Menu</button>
+<div id="coachToast" class="coach-toast" role="status" aria-live="polite"></div>
+  <!-- Page structure/content element. -->
+  <header class="topbar">
+    <!-- Interactive control/link. -->
+    <a class="brand" href="coach.html">Sports Club Admin</a>
+    <!-- Page structure/content element. -->
+    <div class="top-actions">
+      <span id="coachName"></span>
+      <!-- Interactive control/link. -->
+      <button class="btn small" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Page structure/content element. -->
+  <main class="container">
+    <!-- Page structure/content element. -->
+    <section class="page-heading">
+      <span class="badge">COACH / ADMIN</span>
+      <!-- Page structure/content element. -->
+      <h1>Management Dashboard</h1>
+      <!-- Page structure/content element. -->
+      <p class="muted">Use the workflow below to manage the club without leaving this dashboard.</p>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <div id="coachMessage" class="message hidden"></div>
+
+    <!-- Page structure/content element. -->
+    <nav id="coachSidebar" class="quick-nav coach-nav" aria-label="Coach dashboard sections">
+      <!-- Each link moves directly to one management area. -->
+      <a class="active" href="#coach-overview">OVERVIEW</a>
+      <a href="#students-section">PLAYERS</a>
+      <a href="#coaches-section">COACHES</a>
+      <a href="#sessions-section">SESSIONS</a>
+      <a href="#attendance-section">ATTENDANCE</a>
+      <a href="#performance-section">PERFORMANCE</a>
+      <a href="#selection-section">SELECTION</a>
+      <a href="#teams-section">TEAMS</a>
+    <a href="#coach-analytics">ANALYTICS</a>
+      <a href="#coach-calendar">CALENDAR</a>
+    </nav>
+
+    <!-- A short workflow guide makes the large admin page easier to understand. -->
+    <div class="coach-view-heading"><div><span class="section-kicker">CLUB MANAGEMENT</span><h1 id="coachViewTitle" tabindex="-1">Overview</h1><p id="coachViewDescription" class="muted">Your club at a glance. Select a section to manage records.</p></div><button class="btn" id="coachBackOverview" type="button">← Overview</button></div><section class="coach-workflow" aria-label="Management workflow">
+      <div><span>01</span><strong>PLAYERS</strong><small>Manage student records</small></div>
+      <div><span>02</span><strong>SESSIONS</strong><small>Plan training and testing</small></div>
+      <div><span>03</span><strong>RESULTS</strong><small>Record attendance and performance</small></div>
+      <div><span>04</span><strong>TEAMS</strong><small>Build squads and assign players</small></div>
+    </section>
+
+    <!-- This field filters visible table rows on the page without changing database data. -->
+    <div class="admin-filter" id="coachQuickFind">
+      <label for="coachTableFilter">Quick find</label>
+      <input id="coachTableFilter" type="search" placeholder="Search players, sessions, teams…" autocomplete="off">
+    </div>
+
+    <!-- Page structure/content element. -->
+    <section id="coach-overview" class="stat-grid">
+      <!-- Page structure/content element. -->
+      <div class="stat-card"><span>Students</span><strong id="studentCount">—</strong></div>
+      <!-- Page structure/content element. -->
+      <div class="stat-card"><span>Coaches</span><strong id="coachCount">—</strong></div>
+      <!-- Page structure/content element. -->
+      <div class="stat-card"><span>Sessions</span><strong id="sessionCount">—</strong></div>
+      <!-- Page structure/content element. -->
+      <div class="stat-card"><span>Selections</span><strong id="selectionCount">—</strong></div>
+    </section>
+
+    <section id="coach-analytics" class="panel dashboard-section" aria-label="Club analytics">
+      <div class="panel-title"><div><span class="section-kicker">CLUB INSIGHTS</span><h2>Analytics</h2><p class="panel-help">Database-powered attendance and performance insights.</p></div><button class="btn small" type="button" onclick="loadCoachAnalytics()">Refresh</button></div>
+      <div class="coach-overview-actions"><button class="btn primary" type="button" data-coach-view="sessions-section">+ Create session</button><button class="btn" type="button" data-coach-view="attendance-section">Take attendance</button><button class="btn" type="button" data-coach-view="performance-section">Record performance</button></div><div id="coachAnalyticsCards" class="stat-grid"></div><div id="coachAnalyticsSports" class="analytics-bars"></div>
+      <h3>Players awaiting a performance record</h3><div id="coachMissingPerformance" class="table-wrap"></div>
+    </section>
+    <section id="coach-calendar" class="panel dashboard-section"><div class="panel-title"><div><span class="section-kicker">TRAINING PLANNER</span><h2>Session calendar</h2></div></div><div class="inline-form"><label>Month <input id="calendarMonth" type="month" onchange="renderCoachCalendar()"></label><button class="btn" type="button" onclick="document.querySelector('#sessions-section').scrollIntoView()">Create session</button></div><div id="coachCalendarGrid" class="calendar-grid"></div><div id="coachCalendarAgenda" class="calendar-agenda" aria-label="Monthly agenda"></div></section>
+    <!-- Page structure/content element. -->
+    <section id="students-section" class="panel dashboard-section">
+      <!-- Page structure/content element. -->
+      <div class="panel-title"><div><span class="section-kicker">PLAYER HUB</span><h2>Students</h2><p class="panel-help">Create, edit or remove student records.</p></div><button class="btn small" onclick="loadCoachStudents()">Refresh</button></div>
+      <!-- Defines a form for user input. -->
+      <form id="studentForm" class="form-grid">
+        <!-- Form control used to collect input. -->
+        <input type="hidden" id="student_id">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="student_code">Student code</label><input id="student_code" placeholder="Student Code" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="student_name">Full name</label><input id="student_name" placeholder="Name" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="student_phone">Phone</label><input id="student_phone" placeholder="Phone" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="student_email">Email</label><input id="student_email" type="email" placeholder="Email" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="student_password">Password (leave blank when editing)</label><input id="student_password" type="password" placeholder="Password">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="student_age">Age</label><input id="student_age" type="number" placeholder="Age" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="student_blood_group">Blood group</label><input id="student_blood_group" placeholder="Blood Group" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="student_weight">Weight (kg)</label><input id="student_weight" type="number" step="0.1" placeholder="Weight (kg)">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="student_height">Height (cm)</label><input id="student_height" type="number" step="0.1" placeholder="Height (cm)">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="student_attributes">Physical attributes</label><input id="student_attributes" placeholder="Physical Attributes">
+        <!-- Page structure/content element. -->
+        <div class="form-actions">
+          <!-- Interactive control/link. -->
+          <button class="btn primary" type="submit">Save Student</button>
+          <!-- Interactive control/link. -->
+          <button class="btn" type="button" onclick="clearStudentForm()">Clear</button>
+        </div>
+      </form>
+      <!-- Page structure/content element. -->
+      <div id="studentsTable" class="table-wrap"></div>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <section id="coaches-section" class="panel dashboard-section">
+      <!-- Page structure/content element. -->
+      <div class="panel-title"><div><span class="section-kicker">STAFF</span><h2>Coaches</h2><p class="panel-help">Maintain coach accounts and profile information.</p></div><button class="btn small" onclick="loadCoachCoaches()">Refresh</button></div>
+      <!-- Defines a form for user input. -->
+      <form id="coachForm" class="form-grid">
+        <!-- Form control used to collect input. -->
+        <input type="hidden" id="coach_id">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_code">Coach code</label><input id="coach_code" placeholder="Coach Code" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_name">Full name</label><input id="coach_name" placeholder="Name" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_phone">Phone</label><input id="coach_phone" placeholder="Phone" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_email">Email</label><input id="coach_email" type="email" placeholder="Email" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_password">Password (leave blank when editing)</label><input id="coach_password" type="password" placeholder="Password">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_age">Age</label><input id="coach_age" type="number" placeholder="Age" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_blood_group">Blood group</label><input id="coach_blood_group" placeholder="Blood Group" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_weight">Weight (kg)</label><input id="coach_weight" type="number" step="0.1" placeholder="Weight (kg)">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_height">Height (cm)</label><input id="coach_height" type="number" step="0.1" placeholder="Height (cm)">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_experience">Experience (years)</label><input id="coach_experience" type="number" placeholder="Experience (years)">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="coach_attributes">Physical attributes</label><input id="coach_attributes" placeholder="Physical Attributes">
+        <!-- Page structure/content element. -->
+        <div class="form-actions">
+          <!-- Interactive control/link. -->
+          <button class="btn primary" type="submit">Save Coach</button>
+          <!-- Interactive control/link. -->
+          <button class="btn" type="button" onclick="clearCoachForm()">Clear</button>
+        </div>
+      </form>
+      <!-- Page structure/content element. -->
+      <div id="coachesTable" class="table-wrap"></div>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <section id="sessions-section" class="panel dashboard-section">
+      <!-- Page structure/content element. -->
+      <div class="panel-title"><div><span class="section-kicker">PLAN AHEAD</span><h2>Sessions</h2><p class="panel-help">Create practice and testing sessions.</p></div><button class="btn small" onclick="loadCoachSessions()">Refresh</button></div>
+      <!-- Defines a form for user input. -->
+      <form id="sessionForm" class="form-grid">
+        <!-- Form control used to collect input. -->
+        <input type="hidden" id="session_id">
+        <!-- Form control used to collect input. -->
+        <select id="session_sport" required>
+          <option value="">Sport</option>
+          <option value="1">Football</option>
+          <option value="2">Volleyball</option>
+          <option value="3">Cricket</option>
+        </select>
+        <!-- Form control used to collect input. -->
+        <select id="session_type" required>
+          <option value="Practice">Practice</option>
+          <option value="Testing">Testing</option>
+        </select>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="session_number">Session number</label><input id="session_number" type="number" min="1" placeholder="Session Number" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="session_title">Session title</label><input id="session_title" placeholder="Title" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="session_date">Date</label><input id="session_date" type="date" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="session_start">Start time</label><input id="session_start" type="time" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="session_end">End time</label><input id="session_end" type="time" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="session_location">Location</label><input id="session_location" placeholder="Location">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="session_description">Description</label><input id="session_description" placeholder="Description">
+        <!-- Form control used to collect input. -->
+        <select id="session_status">
+          <option>Scheduled</option>
+          <option>Completed</option>
+          <option>Cancelled</option>
+        </select>
+        <!-- Page structure/content element. -->
+        <div class="form-actions">
+          <!-- Interactive control/link. -->
+          <button class="btn primary" type="submit">Save Session</button>
+          <!-- Interactive control/link. -->
+          <button class="btn" type="button" onclick="clearSessionForm()">Clear</button>
+        </div>
+      </form>
+      <!-- Page structure/content element. -->
+      <div id="sessionsTable" class="table-wrap"></div>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <section id="attendance-section" class="panel dashboard-section">
+      <!-- Page structure/content element. -->
+      <div class="panel-title"><div><span class="section-kicker">CHECK IN</span><h2>Attendance</h2><p class="panel-help">Load a session and record participant attendance.</p></div></div>
+      <!-- Page structure/content element. -->
+      <div class="inline-form">
+        <!-- Form control used to collect input. -->
+        <label for="attendanceSessionId">Session <select id="attendanceSessionId"><option value="">Choose a session…</option></select></label>
+        <!-- Interactive control/link. -->
+        <button class="btn" onclick="loadAttendance()">Load Participants</button>
+      </div>
+      <!-- Page structure/content element. -->
+      <div class="inline-form" id="attendanceBulkActions" hidden><button type="button" class="btn" onclick="markAllAttendance('Present')">Mark all present</button><button type="button" class="btn" onclick="markAllAttendance('Absent')">Mark all absent</button><button type="button" class="btn primary" id="bulkAttendanceSave" onclick="saveBulkAttendance()">Save all attendance</button></div><div id="attendanceTable" class="table-wrap"></div>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <section id="performance-section" class="panel dashboard-section">
+      <div class="panel-title"><div><span class="section-kicker">MEASURE PROGRESS</span><h2>Performance Entry</h2><p class="panel-help">Choose a practice and player, then fill in the statistics. No JSON required.</p></div></div>
+      <div class="performance-form">
+        <div class="performance-grid">
+          <label>Practice session <select id="performanceSessionId" onchange="performanceSessionChanged()"><option value="">Loading practices…</option></select></label>
+          <label>Player <select id="performanceStudentId" onchange="performancePlayerChanged()"><option value="">Select a practice first</option></select></label>
+        </div>
+        <p id="performanceSportLabel" class="muted" aria-live="polite">Select a practice to begin.</p>
+        <form id="performanceForm" onsubmit="event.preventDefault(); savePerformance();">
+          <div id="performanceFields" class="performance-grid"></div>
+          <label class="performance-notes">Overall score (0–100) <input id="performanceOverallScore" type="number" min="0" max="100" step="0.01" required placeholder="e.g. 82"></label>
+          <label class="performance-notes">Coach's notes <textarea id="performanceCoachNotes" maxlength="5000" rows="3" placeholder="What went well? What should improve?"></textarea></label>
+          <div class="inline-form"><label class="next-player-option"><input type="checkbox" id="performanceNextPlayer" checked> Save & next player</label><button id="performanceSaveButton" class="btn primary" type="submit">Save performance</button><button type="button" class="btn" onclick="resetPerformanceEditor()">Clear form</button></div>
+        </form>
+      </div>
+      <h3>Existing records</h3><div id="coachPerformanceTable" class="table-wrap"><p class="muted">Select a practice to view records.</p></div>
+    </section>
+
+    <section id="selection-section" class="panel dashboard-section">
+      <!-- Page structure/content element. -->
+      <div class="panel-title"><div><span class="section-kicker">PICK THE SQUAD</span><h2>Selection</h2><p class="panel-help">Record testing scores and selection results.</p></div></div>
+      <!-- Page structure/content element. -->
+      <div class="inline-form">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="selectionStudentId">Player</label><select id="selectionStudentId" aria-label="Choose player" required><option value="">Choose player…</option></select>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="selectionSportId">Sport</label><select id="selectionSportId" aria-label="Choose sport" required><option value="">Choose sport…</option></select>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="selectionTestingSessionId">Testing session</label><select id="selectionTestingSessionId" aria-label="Choose testing session" required><option value="">Choose testing session…</option></select>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="selectionScore">Overall score</label><input id="selectionScore" type="number" min="0" max="100" step="0.1" placeholder="Overall Score">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="selectionNotes">Coach notes</label><input id="selectionNotes" placeholder="Coach Notes">
+        <!-- Interactive control/link. -->
+        <button class="btn primary" onclick="saveSelection()">Save Selection</button>
+      </div>
+      <!-- Page structure/content element. -->
+      <p class="muted">Rule: score above 55 = Selected; 55 or below = Not Selected.</p>
+      <!-- Page structure/content element. -->
+      <div id="selectionTable" class="table-wrap"></div>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <section id="teams-section" class="panel dashboard-section">
+      <!-- Page structure/content element. -->
+      <div class="panel-title"><div><span class="section-kicker">BUILD THE TEAM</span><h2>Team Management</h2><p class="panel-help">Create teams and assign players to positions.</p></div><button class="btn small" onclick="loadCoachTeams()">Refresh</button></div>
+      <!-- Defines a form for user input. -->
+      <form id="teamForm" class="form-grid">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="team_sport_id">Sport</label><select id="team_sport_id" aria-label="Choose sport" required><option value="">Choose sport…</option></select>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="team_name">Official team name</label><input id="team_name" placeholder="Official Team Name" required>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="team_formation">Formation</label><input id="team_formation" placeholder="Formation">
+        <!-- Page structure/content element. -->
+        <div class="form-actions">
+          <!-- Interactive control/link. -->
+          <button class="btn primary" type="submit">Create Team</button>
+        </div>
+      </form>
+
+      <!-- Page structure/content element. -->
+      <div class="inline-form">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="member_team_id">Team</label><select id="member_team_id" aria-label="Choose team" required><option value="">Choose team…</option></select>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="member_student_id">Player</label><select id="member_student_id" aria-label="Choose player" required><option value="">Choose player…</option></select>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="member_position_id">Position</label><select id="member_position_id" aria-label="Choose position" required><option value="">Choose position…</option></select>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="member_status">Lineup status</label><select id="member_status">
+          <option>Starter</option>
+          <option>Substitute</option>
+          <option>Reserve</option>
+        </select>
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="member_jersey">Jersey number</label><input id="member_jersey" type="number" placeholder="Jersey #">
+        <!-- Form control used to collect input. -->
+        <label class="field-label" for="member_slot">Formation slot</label><input id="member_slot" placeholder="Formation Slot">
+        <!-- Interactive control/link. -->
+        <button class="btn primary" onclick="assignTeamMember()">Assign Player</button>
+      </div>
+      <!-- Page structure/content element. -->
+      <div id="teamsTable" class="table-wrap"></div>
+    </section>
+  </main>
+
+  <!-- Loads JavaScript for the page. -->
+  <script src="theme.js"></script>
+  <!-- Loads JavaScript for the page. -->
+  <script src="app.js"></script>
+  <script src="v3.js"></script>
+  <script src="v4.js"></script>
+  <!-- Loads JavaScript for the page. -->
+  <script>
+    document.addEventListener('DOMContentLoaded', initCoach);
+  </script>
+</body>
+</html>

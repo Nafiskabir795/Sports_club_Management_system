@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <!-- Loads an external stylesheet/resource. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Page structure/content element. -->
+  <header class="topbar">
+    <!-- Interactive control/link. -->
+    <a class="brand" href="portal.html">Sports Club</a>
+    <!-- Page structure/content element. -->
+    <div class="top-actions">
+      <span id="studentName"></span>
+      <!-- Interactive control/link. -->
+      <button class="btn small" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Page structure/content element. -->
+  <main class="container">
+    <!-- Page structure/content element. -->
+    <section class="page-heading">
+      <span class="badge">STUDENT DASHBOARD</span>
+      <!-- Page structure/content element. -->
+      <h1 id="dashboardTitle">My Dashboard</h1>
+      <!-- Page structure/content element. -->
+      <p class="muted">Your profile, schedule, attendance, selection, team and performance information — all in one place.</p>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <div id="studentMessage" class="message hidden"></div>
+
+    <!-- Page structure/content element. -->
+    <button id="studentMenuToggle" class="btn small student-menu-toggle" type="button" aria-controls="studentNav" aria-expanded="false">☰ Menu</button>
+    <nav id="studentNav" class="quick-nav student-nav" aria-label="Dashboard sections">
+      <!-- Each link jumps to a major area of the student dashboard. -->
+      <a class="active" href="#overview">OVERVIEW</a>
+      <a href="#schedule-section">SCHEDULE</a>
+      <a href="#selection-section">SELECTION</a>
+      <a href="#team-section">TEAM</a>
+      <a href="#performance-section">PERFORMANCE</a>
+      <a href="#overview">PROFILE</a>
+    </nav>
+
+    <!-- These summary cards give the student the most useful information first. -->
+    <section class="student-summary" aria-label="Student summary">
+      <article class="summary-card">
+        <span>NEXT SESSION</span>
+        <strong id="summaryNextSession">—</strong>
+        <small id="summaryNextSessionMeta">Loading schedule…</small>
+      </article>
+      <article class="summary-card">
+        <span>ATTENDANCE</span>
+        <strong id="summaryAttendance">—</strong>
+        <small id="summaryAttendanceMeta">Based on recorded sessions</small>
+      </article>
+      <article class="summary-card">
+        <span>SELECTION</span>
+        <strong id="summarySelection">—</strong>
+        <small id="summarySelectionMeta">No result loaded yet</small>
+      </article>
+      <article class="summary-card">
+        <span>PERFORMANCE</span>
+        <strong id="summaryPerformance">—</strong>
+        <small id="summaryPerformanceMeta">Overall score average</small>
+      </article>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <section id="overview" class="dashboard-grid student-view" data-view="overview">
+      <!-- Page structure/content element. -->
+      <article class="panel">
+        <!-- Page structure/content element. -->
+        <div class="panel-title"><h2>Profile</h2></div>
+        <!-- Page structure/content element. -->
+        <div id="profile" class="info-grid"></div>
+      </article>
+
+      <!-- Page structure/content element. -->
+      <article class="panel">
+        <!-- Page structure/content element. -->
+        <div class="panel-title"><h2>My Sports & Positions</h2></div>
+        <!-- Page structure/content element. -->
+        <div id="sports" class="stack"></div>
+      </article>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <section id="schedule-section" class="panel dashboard-section student-view" data-view="schedule-section">
+      <!-- Page structure/content element. -->
+      <div class="panel-title">
+        <!-- Page structure/content element. -->
+        <div><span class="section-kicker">NEXT UP</span><h2>Schedule & Attendance</h2></div>
+        <!-- Interactive control/link. -->
+        <button class="btn small" onclick="loadSchedule()">Refresh</button>
+      </div>
+      <!-- Page structure/content element. -->
+      <div class="student-filter-bar"><label for="studentScheduleFilter">Show sessions</label><select id="studentScheduleFilter"><option value="upcoming">Upcoming</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option><option value="all">All sessions</option></select></div><div id="schedule" class="student-session-grid" aria-live="polite"></div>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <section id="selection-section" class="panel dashboard-section student-view" data-view="selection-section">
+      <!-- Page structure/content element. -->
+      <div class="panel-title">
+        <!-- Page structure/content element. -->
+        <div><span class="section-kicker">YOUR STATUS</span><h2>Selection Status</h2></div>
+        <!-- Interactive control/link. -->
+        <button class="btn small" onclick="loadSelection()">Refresh</button>
+      </div>
+      <!-- Page structure/content element. -->
+      <div id="selection" class="cards-list"></div>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <section id="team-section" class="panel dashboard-section student-view" data-view="team-section">
+      <!-- Page structure/content element. -->
+      <div class="panel-title">
+        <!-- Page structure/content element. -->
+        <div><span class="section-kicker">YOUR SQUAD</span><h2>My Team Assignments</h2></div>
+        <!-- Interactive control/link. -->
+        <button class="btn small" onclick="loadTeams()">Refresh</button>
+      </div>
+      <!-- Page structure/content element. -->
+      <div id="teams" class="cards-list"></div>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <section id="performance-section" class="panel dashboard-section student-view" data-view="performance-section">
+      <!-- Page structure/content element. -->
+      <div class="panel-title">
+        <!-- Page structure/content element. -->
+        <div><span class="section-kicker">KEEP IMPROVING</span><h2>Stats & Results</h2></div>
+        <!-- Interactive control/link. -->
+        <button class="btn small" onclick="loadPerformance()">Refresh</button>
+      </div>
+      <!-- Page structure/content element. -->
+      <div class="student-filter-bar"><label for="studentPerformanceFilter">Sport</label><select id="studentPerformanceFilter"><option value="all">All sports</option><option value="football">Football</option><option value="volleyball">Volleyball</option><option value="cricket">Cricket</option></select></div><div id="studentPerformanceChart" class="student-chart"></div><div id="performance"></div>
+    </section>
+  </main>
+
+  <!-- Loads JavaScript for the page. -->
+  <script src="theme.js"></script>
+  <!-- Loads JavaScript for the page. -->
+  <script src="app.js"></script>
+  <script src="student-v5.js"></script>
+  <!-- Loads JavaScript for the page. -->
+  <script>
+    document.addEventListener('DOMContentLoaded', initDashboard);
+  </script>
+</body>
+</html>

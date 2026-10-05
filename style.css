@@ -1,0 +1,2198 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@500;600;700;800;900&display=swap');
+/* =========================================================
+   SPORTS CLUB — TEAMSNAP-INSPIRED MODERN THEME
+   - Flat / boxy UI
+   - Green gradient accents
+   - Warm light mode
+   - OLED-compatible dark mode
+   - Bold uppercase UI typography
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+/* Defines styles for :root. */
+:root {
+  /* Sets the color-scheme property. */
+  color-scheme: light;
+  /* Sets the --bg property. */
+  --bg: #f7f4ec;
+  --bg-soft: #fffdf7;
+  --card: #fffefa;
+  --card-2: #f2efe5;
+  --text: #171b18;
+  --muted: #68716b;
+  --border: #d9ded7;
+  --border-strong: #b9c2ba;
+
+  /* Sets the --green property. */
+  --green: #18a957;
+  --green-dark: #087a3d;
+  --green-deep: #064d2a;
+  --green-soft: #e3f6e9;
+  --green-gradient: linear-gradient(135deg, #087a3d 0%, #18a957 52%, #71d36f 100%);
+
+  /* Sets the --orange property. */
+  --orange: #f56b15;
+  --danger: #d83c4d;
+  --warning: #a56a00;
+  --success: #087a3d;
+
+  /* Sets the --shadow property. */
+  --shadow: 0 8px 0 rgba(23, 27, 24, .055);
+  --radius: 6px;
+  --radius-sm: 4px;
+  --focus: 0 0 0 3px rgba(24, 169, 87, .22);
+}
+
+/* Defines styles for html[data-theme="dark"]. */
+html[data-theme="dark"] {
+  /* Sets the color-scheme property. */
+  color-scheme: dark;
+  /* Sets the --bg property. */
+  --bg: #000000;
+  --bg-soft: #050705;
+  --card: #080b09;
+  --card-2: #0d120f;
+  --text: #f4f8f4;
+  --muted: #a0aaa3;
+  --border: #1d2720;
+  --border-strong: #2b392f;
+
+  /* Sets the --green property. */
+  --green: #36d878;
+  --green-dark: #20b862;
+  --green-deep: #0b6d38;
+  --green-soft: #0c2417;
+  --green-gradient: linear-gradient(135deg, #075b30 0%, #0e9a4b 52%, #36d878 100%);
+
+  /* Sets the --orange property. */
+  --orange: #ff8a3d;
+  --danger: #ff6675;
+  --warning: #e2a82c;
+  --success: #36d878;
+
+  /* Sets the --shadow property. */
+  --shadow: none;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Defines styles for body. */
+body {
+  /* Sets the margin property. */
+  margin: 0;
+  /* Sets the font-family property. */
+  font-family: "Open Sans", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  /* Sets the background property. */
+  background: var(--bg);
+  /* Sets the color property. */
+  color: var(--text);
+  /* Sets the line-height property. */
+  line-height: 1.5;
+  /* Sets the transition property. */
+  transition: background .2s ease, color .2s ease;
+}
+
+body, button, input, select, textarea { font-size: 15px; }
+
+a { color: inherit; text-decoration: none; }
+
+button, input, select, textarea { font: inherit; }
+
+/* Defines styles for ::selection. */
+::selection {
+  /* Sets the background property. */
+  background: var(--green);
+  /* Sets the color property. */
+  color: #fff;
+}
+
+/* Typography — bold, direct, sports-brand feel */
+h1, h2, h3, h4, .brand, .btn, .badge, th, label, .tag, .theme-toggle {
+  /* Sets the font-weight property. */
+  font-weight: 900;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .025em;
+}
+
+/* Defines styles for h1, h2, h3, h4, .badge, .brand, .btn, th, label, .tag, .top-actions, .theme-toggle. */
+h1, h2, h3, h4, .badge, .brand, .btn, th, label, .tag, .top-actions, .theme-toggle {
+  /* Sets the text-transform property. */
+  text-transform: uppercase;
+}
+
+/* Defines styles for h1. */
+h1 {
+  /* Sets the margin property. */
+  margin: 10px 0 12px;
+  /* Sets the font-size property. */
+  font-size: clamp(2rem, 5vw, 3.65rem);
+  /* Sets the line-height property. */
+  line-height: .98;
+  /* Sets the letter-spacing property. */
+  letter-spacing: -.035em;
+}
+
+h2 { margin: 0; font-size: 1.15rem; }
+h3 { margin: 0 0 12px; }
+p { line-height: 1.65; }
+.muted { color: var(--muted); }
+
+/* Landing */
+.landing-page {
+  /* Sets the min-height property. */
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(113,211,111,.18), transparent 30%),
+    radial-gradient(circle at 90% 90%, rgba(24,169,87,.12), transparent 32%),
+    var(--bg);
+}
+
+/* Defines styles for .hero, .auth-page. */
+.hero, .auth-page {
+  /* Sets the min-height property. */
+  min-height: 100vh;
+  /* Sets the display property. */
+  display: grid;
+  /* Sets the place-items property. */
+  place-items: center;
+  /* Sets the padding property. */
+  padding: 24px;
+}
+
+/* Defines styles for .hero-card, .auth-card. */
+.hero-card, .auth-card {
+  /* Sets the width property. */
+  width: min(680px, 100%);
+  /* Sets the background property. */
+  background: var(--card);
+  /* Sets the border property. */
+  border: 1px solid var(--border);
+  /* Sets the border-top property. */
+  border-top: 6px solid var(--green);
+  /* Sets the border-radius property. */
+  border-radius: var(--radius);
+  /* Sets the box-shadow property. */
+  box-shadow: var(--shadow);
+  /* Sets the padding property. */
+  padding: 48px;
+  /* Sets the text-align property. */
+  text-align: center;
+}
+
+.auth-card { max-width: 500px; text-align: left; }
+
+.hero-card h1 { max-width: 620px; margin-inline: auto; }
+.hero-card .btn { margin-top: 12px; }
+
+/* Defines styles for .badge. */
+.badge {
+  /* Sets the display property. */
+  display: inline-flex;
+  /* Sets the align-items property. */
+  align-items: center;
+  /* Sets the gap property. */
+  gap: 6px;
+  /* Sets the width property. */
+  width: fit-content;
+  /* Sets the padding property. */
+  padding: 7px 10px;
+  /* Sets the border-radius property. */
+  border-radius: var(--radius-sm);
+  /* Sets the background property. */
+  background: var(--green-soft);
+  /* Sets the color property. */
+  color: var(--green-dark);
+  /* Sets the font-size property. */
+  font-size: .72rem;
+  /* Sets the line-height property. */
+  line-height: 1;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .11em;
+}
+
+/* Defines styles for html[data-theme="dark"] .badge. */
+html[data-theme="dark"] .badge {
+  /* Sets the color property. */
+  color: var(--green);
+}
+
+/* Buttons */
+.btn {
+  /* Sets the border property. */
+  border: 1px solid var(--border-strong);
+  /* Sets the background property. */
+  background: var(--card);
+  /* Sets the color property. */
+  color: var(--text);
+  /* Sets the border-radius property. */
+  border-radius: var(--radius-sm);
+  /* Sets the padding property. */
+  padding: 11px 16px;
+  /* Sets the cursor property. */
+  cursor: pointer;
+  /* Sets the display property. */
+  display: inline-flex;
+  /* Sets the justify-content property. */
+  justify-content: center;
+  /* Sets the align-items property. */
+  align-items: center;
+  /* Sets the gap property. */
+  gap: 15px;
+  /* Sets the transition property. */
+  transition: transform .12s ease, background .15s ease, border-color .15s ease;
+}
+
+.btn:hover { transform: translateY(-1px); border-color: var(--green); }
+.btn:active { transform: translateY(0); }
+/* Defines styles for .btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible. */
+.btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  /* Sets the outline property. */
+  outline: none;
+  /* Sets the box-shadow property. */
+  box-shadow: var(--focus);
+  /* Sets the border-color property. */
+  border-color: var(--green);
+}
+
+/* Defines styles for .btn.primary. */
+.btn.primary {
+  /* Sets the color property. */
+  color: #fff;
+  /* Sets the background property. */
+  background: var(--green-gradient);
+  /* Sets the border-color property. */
+  border-color: var(--green);
+  /* Sets the box-shadow property. */
+  box-shadow: 0 4px 0 var(--green-deep);
+}
+
+.btn.primary:hover { filter: brightness(1.04); }
+.btn.primary:active { box-shadow: 0 2px 0 var(--green-deep); transform: translateY(2px); }
+
+.btn.small { padding: 7px 10px; font-size: .72rem; }
+.btn.full { width: 100%; margin-top: 18px; }
+
+/* Defines styles for .btn:disabled. */
+.btn:disabled {
+  /* Sets the opacity property. */
+  opacity: .5;
+  /* Sets the cursor property. */
+  cursor: not-allowed;
+  /* Sets the transform property. */
+  transform: none;
+  /* Sets the box-shadow property. */
+  box-shadow: none;
+}
+
+/* Defines styles for .back-link. */
+.back-link {
+  /* Sets the color property. */
+  color: var(--muted);
+  /* Sets the display property. */
+  display: inline-block;
+  /* Sets the margin-bottom property. */
+  margin-bottom: 20px;
+  /* Sets the font-weight property. */
+  font-weight: 800;
+}
+
+/* Forms */
+label { display: block; margin: 16px 0 7px; font-size: .78rem; }
+
+/* Defines styles for input, select, textarea. */
+input, select, textarea {
+  /* Sets the width property. */
+  width: 100%;
+  /* Sets the border property. */
+  border: 1px solid var(--border);
+  /* Sets the border-radius property. */
+  border-radius: var(--radius-sm);
+  /* Sets the padding property. */
+  padding: 11px 12px;
+  /* Sets the background property. */
+  background: var(--bg-soft);
+  /* Sets the color property. */
+  color: var(--text);
+  /* Sets the font property. */
+  font: inherit;
+  /* Sets the transition property. */
+  transition: border-color .15s ease, background .15s ease;
+}
+
+input::placeholder, textarea::placeholder { color: var(--muted); opacity: .8; }
+
+textarea { min-height: 150px; resize: vertical; }
+
+/* Defines styles for .form-grid. */
+.form-grid {
+  /* Sets the display property. */
+  display: grid;
+  /* Sets the grid-template-columns property. */
+  grid-template-columns: repeat(3, 1fr);
+  /* Sets the gap property. */
+  gap: 10px;
+  /* Sets the margin-bottom property. */
+  margin-bottom: 18px;
+}
+
+.form-grid label,
+.form-grid textarea,
+.form-grid .form-actions,
+.form-grid .form-section-title,
+.form-grid small,
+.form-grid .message { grid-column: 1 / -1; }
+
+/* Defines styles for .form-section-title. */
+.form-section-title {
+  /* Sets the padding-top property. */
+  padding-top: 10px;
+  /* Sets the margin property. */
+  margin: 8px 0 0;
+  /* Sets the border-bottom property. */
+  border-bottom: 2px solid var(--border);
+  /* Sets the padding-bottom property. */
+  padding-bottom: 8px;
+}
+
+.form-actions { display: flex; gap: 8px; align-items: center; }
+
+/* Defines styles for .inline-form. */
+.inline-form {
+  /* Sets the display property. */
+  display: flex;
+  /* Sets the flex-wrap property. */
+  flex-wrap: wrap;
+  /* Sets the gap property. */
+  gap: 9px;
+  /* Sets the margin-bottom property. */
+  margin-bottom: 16px;
+}
+
+.inline-form > * { flex: 1 1 150px; }
+
+/* Defines styles for .demo-box. */
+.demo-box {
+  /* Sets the margin-top property. */
+  margin-top: 20px;
+  /* Sets the padding property. */
+  padding: 14px;
+  /* Sets the border-radius property. */
+  border-radius: var(--radius-sm);
+  /* Sets the background property. */
+  background: var(--card-2);
+  /* Sets the border property. */
+  border: 1px dashed var(--border-strong);
+}
+
+.demo-box small { display: block; color: var(--muted); margin-top: 5px; }
+
+/* Navigation */
+.topbar {
+  /* Sets the position property. */
+  position: sticky;
+  /* Sets the top property. */
+  top: 0;
+  /* Sets the z-index property. */
+  z-index: 10;
+  /* Sets the background property. */
+  background: color-mix(in srgb, var(--card) 94%, transparent);
+  /* Sets the backdrop-filter property. */
+  backdrop-filter: blur(12px);
+  /* Sets the border-bottom property. */
+  border-bottom: 1px solid var(--border);
+  /* Sets the padding property. */
+  padding: 13px max(20px, calc((100% - 1200px) / 2));
+  /* Sets the display property. */
+  display: flex;
+  /* Sets the align-items property. */
+  align-items: center;
+  /* Sets the justify-content property. */
+  justify-content: space-between;
+  /* Sets the gap property. */
+  gap: 15px;
+}
+
+/* Defines styles for .brand. */
+.brand {
+  /* Sets the font-size property. */
+  font-size: 1.08rem;
+  /* Sets the letter-spacing property. */
+  letter-spacing: -.01em;
+}
+
+/* Defines styles for .brand::before. */
+.brand::before {
+  /* Sets the content property. */
+  content: "●";
+  /* Sets the color property. */
+  color: var(--green);
+  /* Sets the margin-right property. */
+  margin-right: 8px;
+}
+
+.top-actions { display: flex; align-items: center; gap: 12px; font-size: .76rem; }
+
+/* Theme switch */
+.theme-toggle {
+  /* Sets the position property. */
+  position: fixed;
+  /* Sets the right property. */
+  right: 18px;
+  /* Sets the bottom property. */
+  bottom: 18px;
+  /* Sets the z-index property. */
+  z-index: 50;
+  /* Sets the width property. */
+  width: 48px;
+  /* Sets the height property. */
+  height: 48px;
+  /* Sets the border property. */
+  border: 1px solid var(--border-strong);
+  /* Sets the border-radius property. */
+  border-radius: 50%;
+  /* Sets the background property. */
+  background: var(--card);
+  /* Sets the color property. */
+  color: var(--text);
+  /* Sets the box-shadow property. */
+  box-shadow: var(--shadow);
+  /* Sets the cursor property. */
+  cursor: pointer;
+  /* Sets the display property. */
+  display: grid;
+  /* Sets the place-items property. */
+  place-items: center;
+  /* Sets the font-size property. */
+  font-size: 18px;
+}
+
+.theme-toggle:hover { border-color: var(--green); transform: translateY(-2px); }
+
+/* Layout */
+.container {
+  /* Sets the width property. */
+  width: min(1200px, calc(100% - 32px));
+  /* Sets the margin property. */
+  margin: 0 auto;
+  /* Sets the padding property. */
+  padding: 36px 0 80px;
+}
+
+.page-heading { margin-bottom: 25px; }
+.page-heading .badge { margin-bottom: 7px; }
+.page-heading h1 { margin-top: 4px; }
+
+/* Defines styles for .card-grid, .dashboard-grid, .stat-grid. */
+.card-grid, .dashboard-grid, .stat-grid {
+  /* Sets the display property. */
+  display: grid;
+  /* Sets the gap property. */
+  gap: 18px;
+}
+
+.card-grid { grid-template-columns: repeat(3, 1fr); }
+.dashboard-grid { grid-template-columns: 1.2fr .8fr; }
+.stat-grid { grid-template-columns: repeat(4, 1fr); margin-bottom: 18px; }
+
+/* Flat cards / panels */
+.panel, .sport-card, .stat-card {
+  /* Sets the background property. */
+  background: var(--card);
+  /* Sets the border property. */
+  border: 1px solid var(--border);
+  /* Sets the border-radius property. */
+  border-radius: var(--radius);
+  /* Sets the box-shadow property. */
+  box-shadow: var(--shadow);
+}
+
+/* Defines styles for .panel. */
+.panel {
+  /* Sets the padding property. */
+  padding: 22px;
+  /* Sets the margin-bottom property. */
+  margin-bottom: 18px;
+  /* Sets the border-left property. */
+  border-left: 4px solid transparent;
+}
+
+.panel:hover { border-left-color: var(--green); }
+
+/* Defines styles for .sport-card. */
+.sport-card {
+  /* Sets the padding property. */
+  padding: 24px;
+  /* Sets the min-height property. */
+  min-height: 190px;
+  /* Sets the display property. */
+  display: flex;
+  /* Sets the flex-direction property. */
+  flex-direction: column;
+  /* Sets the justify-content property. */
+  justify-content: space-between;
+  /* Sets the position property. */
+  position: relative;
+  /* Sets the overflow property. */
+  overflow: hidden;
+}
+
+/* Defines styles for .sport-card::before. */
+.sport-card::before {
+  /* Sets the content property. */
+  content: "";
+  /* Sets the position property. */
+  position: absolute;
+  /* Sets the inset property. */
+  inset: 0 0 auto;
+  /* Sets the height property. */
+  height: 4px;
+  /* Sets the background property. */
+  background: var(--green-gradient);
+}
+
+.sport-card.locked { opacity: .55; }
+
+/* Defines styles for .sport-card h2. */
+.sport-card h2 {
+  /* Sets the font-size property. */
+  font-size: 1.45rem;
+  /* Sets the margin-top property. */
+  margin-top: 12px;
+  /* Sets the letter-spacing property. */
+  letter-spacing: -.02em;
+}
+
+/* Defines styles for .stat-card. */
+.stat-card {
+  /* Sets the padding property. */
+  padding: 18px;
+  /* Sets the border-top property. */
+  border-top: 4px solid var(--green);
+}
+
+.stat-card span { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: uppercase; }
+.stat-card strong { display: block; font-size: 2rem; margin-top: 6px; }
+
+/* Defines styles for .panel-title. */
+.panel-title {
+  /* Sets the display property. */
+  display: flex;
+  /* Sets the justify-content property. */
+  justify-content: space-between;
+  /* Sets the align-items property. */
+  align-items: center;
+  /* Sets the gap property. */
+  gap: 12px;
+  /* Sets the margin-bottom property. */
+  margin-bottom: 17px;
+}
+
+/* Defines styles for .info-grid. */
+.info-grid {
+  /* Sets the display property. */
+  display: grid;
+  /* Sets the grid-template-columns property. */
+  grid-template-columns: repeat(2, 1fr);
+  /* Sets the gap property. */
+  gap: 10px;
+}
+
+/* Defines styles for .info-item. */
+.info-item {
+  /* Sets the padding property. */
+  padding: 12px;
+  /* Sets the border property. */
+  border: 1px solid var(--border);
+  /* Sets the border-radius property. */
+  border-radius: var(--radius-sm);
+  /* Sets the background property. */
+  background: var(--card-2);
+}
+
+.info-item small { color: var(--muted); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: .68rem; font-weight: 800; }
+.info-item strong { word-break: break-word; }
+
+.stack, .cards-list { display: grid; gap: 12px; }
+
+/* Defines styles for .mini-card. */
+.mini-card {
+  /* Sets the border property. */
+  border: 1px solid var(--border);
+  /* Sets the border-radius property. */
+  border-radius: var(--radius-sm);
+  /* Sets the padding property. */
+  padding: 14px;
+  /* Sets the background property. */
+  background: var(--bg-soft);
+}
+
+/* Defines styles for .tag. */
+.tag {
+  /* Sets the display property. */
+  display: inline-block;
+  /* Sets the padding property. */
+  padding: 5px 9px;
+  /* Sets the border-radius property. */
+  border-radius: var(--radius-sm);
+  /* Sets the font-size property. */
+  font-size: .68rem;
+  /* Sets the font-weight property. */
+  font-weight: 900;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .04em;
+  /* Sets the background property. */
+  background: var(--card-2);
+  /* Sets the margin property. */
+  margin: 3px 4px 3px 0;
+}
+
+.tag.success { background: var(--green-soft); color: var(--success); }
+.tag.danger { background: rgba(216,60,77,.12); color: var(--danger); }
+.tag.warning { background: rgba(165,106,0,.13); color: var(--warning); }
+
+/* Tables */
+.table-wrap {
+  /* Sets the overflow-x property. */
+  overflow-x: auto;
+  /* Sets the border property. */
+  border: 1px solid var(--border);
+  /* Sets the border-radius property. */
+  border-radius: var(--radius-sm);
+}
+
+table { width: 100%; border-collapse: collapse; min-width: 650px; }
+th, td { padding: 11px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+/* Defines styles for th. */
+th {
+  /* Sets the background property. */
+  background: var(--card-2);
+  /* Sets the font-size property. */
+  font-size: .72rem;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .07em;
+  /* Sets the white-space property. */
+  white-space: nowrap;
+}
+tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: var(--green-soft); }
+
+/* Messages */
+.message {
+  /* Sets the padding property. */
+  padding: 12px 14px;
+  /* Sets the border-radius property. */
+  border-radius: var(--radius-sm);
+  /* Sets the margin property. */
+  margin: 12px 0;
+  /* Sets the background property. */
+  background: var(--green-soft);
+  /* Sets the border property. */
+  border: 1px solid rgba(24,169,87,.25);
+}
+
+.message.error { background: rgba(216,60,77,.10); border-color: rgba(216,60,77,.28); color: var(--danger); }
+.message.success { background: var(--green-soft); border-color: rgba(24,169,87,.28); color: var(--success); }
+.hidden { display: none !important; }
+
+.json-box { margin-bottom: 10px; font-family: Consolas, "SFMono-Regular", monospace; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    /* Sets the scroll-behavior property. */
+    scroll-behavior: auto !important;
+    /* Sets the transition property. */
+    transition: none !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .card-grid, .dashboard-grid, .stat-grid, .form-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 580px) {
+  .hero-card, .auth-card { padding: 28px 20px; }
+  .card-grid, .dashboard-grid, .stat-grid, .form-grid, .info-grid { grid-template-columns: 1fr; }
+  .topbar { padding: 12px 16px; }
+  .top-actions span { display: none; }
+  .container { width: min(100% - 22px, 1200px); padding-top: 24px; }
+  .theme-toggle { right: 12px; bottom: 12px; }
+}
+
+
+/* =========================================================
+   PORTAL VISUAL SYSTEM — bold athletic display treatment
+   ========================================================= */
+
+/* Defines styles for body:has(.portal-subtitle). */
+body:has(.portal-subtitle) {
+  /* Sets the background property. */
+  background: #070a0b;
+  /* Sets the font-family property. */
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+/* Defines styles for html[data-theme="light"] body:has(.portal-subtitle). */
+html[data-theme="light"] body:has(.portal-subtitle) {
+  /* Sets the background property. */
+  background: #f3f1e9;
+}
+
+/* Defines styles for body:has(.portal-subtitle) .topbar. */
+body:has(.portal-subtitle) .topbar {
+  /* Sets the min-height property. */
+  min-height: 80px;
+  /* Sets the padding property. */
+  padding: 0 max(32px, calc((100% - 1530px) / 2));
+  /* Sets the background property. */
+  background: #090c0d;
+  /* Sets the border-bottom property. */
+  border-bottom: 1px solid #242a2d;
+  /* Sets the backdrop-filter property. */
+  backdrop-filter: none;
+}
+
+/* Defines styles for html[data-theme="light"] body:has(.portal-subtitle) .topbar. */
+html[data-theme="light"] body:has(.portal-subtitle) .topbar {
+  /* Sets the background property. */
+  background: #fffdf7;
+  /* Sets the border-bottom-color property. */
+  border-bottom-color: #d9ddd8;
+}
+
+/* Defines styles for body:has(.portal-subtitle) .brand. */
+body:has(.portal-subtitle) .brand {
+  /* Sets the display property. */
+  display: inline-flex;
+  /* Sets the align-items property. */
+  align-items: center;
+  /* Sets the gap property. */
+  gap: 11px;
+  /* Sets the font-family property. */
+  font-family: "Barlow Condensed", Impact, "Arial Narrow", sans-serif;
+  /* Sets the font-size property. */
+  font-size: 1.35rem;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .015em;
+}
+
+body:has(.portal-subtitle) .brand::before { display: none; }
+
+/* Defines styles for .brand-mark. */
+.brand-mark {
+  /* Sets the width property. */
+  width: 40px;
+  /* Sets the height property. */
+  height: 40px;
+  /* Sets the display property. */
+  display: grid;
+  /* Sets the place-items property. */
+  place-items: center;
+  /* Sets the background property. */
+  background: #f5f5f2;
+  /* Sets the color property. */
+  color: #101415;
+  /* Sets the font-family property. */
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  /* Sets the font-size property. */
+  font-size: 1rem;
+  /* Sets the font-weight property. */
+  font-weight: 900;
+  /* Sets the clip-path property. */
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
+}
+
+.brand-word { font-weight: 900; }
+
+/* Defines styles for body:has(.portal-subtitle) .top-actions. */
+body:has(.portal-subtitle) .top-actions {
+  /* Sets the text-transform property. */
+  text-transform: none;
+  /* Sets the font-family property. */
+  font-family: Inter, sans-serif;
+  /* Sets the font-weight property. */
+  font-weight: 700;
+  /* Sets the color property. */
+  color: #aab2b5;
+  /* Sets the letter-spacing property. */
+  letter-spacing: 0;
+}
+
+/* Defines styles for body:has(.portal-subtitle) .top-actions .btn. */
+body:has(.portal-subtitle) .top-actions .btn {
+  /* Sets the background property. */
+  background: transparent;
+  /* Sets the border property. */
+  border: 0;
+  /* Sets the color property. */
+  color: #c7cdcf;
+  /* Sets the padding property. */
+  padding: 7px 0;
+  /* Sets the box-shadow property. */
+  box-shadow: none;
+}
+
+/* Defines styles for body:has(.portal-subtitle) .container. */
+body:has(.portal-subtitle) .container {
+  /* Sets the width property. */
+  width: min(1530px, calc(100% - 48px));
+  /* Sets the padding property. */
+  padding: 68px 0 80px;
+}
+
+/* Defines styles for body:has(.portal-subtitle) .page-heading. */
+body:has(.portal-subtitle) .page-heading {
+  /* Sets the margin-bottom property. */
+  margin-bottom: 56px;
+  /* Sets the padding-left property. */
+  padding-left: 1px;
+}
+
+/* Defines styles for .eyebrow. */
+.eyebrow {
+  /* Sets the display property. */
+  display: inline-block;
+  /* Sets the color property. */
+  color: #98a3a7;
+  /* Sets the font-family property. */
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  /* Sets the font-size property. */
+  font-size: .88rem;
+  /* Sets the font-weight property. */
+  font-weight: 800;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .16em;
+  /* Sets the text-transform property. */
+  text-transform: uppercase;
+}
+
+/* Defines styles for body:has(.portal-subtitle) .page-heading h1. */
+body:has(.portal-subtitle) .page-heading h1 {
+  /* Sets the margin property. */
+  margin: 17px 0 13px;
+  /* Sets the color property. */
+  color: #f4f5f4;
+  /* Sets the font-family property. */
+  font-family: "Barlow Condensed", Impact, "Arial Narrow", sans-serif;
+  /* Sets the font-size property. */
+  font-size: clamp(4.2rem, 7vw, 6.9rem);
+  /* Sets the font-weight property. */
+  font-weight: 900;
+  /* Sets the line-height property. */
+  line-height: .82;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .005em;
+  /* Sets the text-transform property. */
+  text-transform: uppercase;
+}
+
+html[data-theme="light"] body:has(.portal-subtitle) .page-heading h1 { color: #111516; }
+
+/* Defines styles for .portal-subtitle. */
+.portal-subtitle {
+  /* Sets the margin property. */
+  margin: 0;
+  /* Sets the color property. */
+  color: #929da1;
+  /* Sets the font-size property. */
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  /* Sets the font-weight property. */
+  font-weight: 500;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .005em;
+}
+
+html[data-theme="light"] .portal-subtitle { color: #68716b; }
+
+/* Defines styles for body:has(.portal-subtitle) .card-grid. */
+body:has(.portal-subtitle) .card-grid {
+  /* Sets the grid-template-columns property. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Sets the gap property. */
+  gap: 22px;
+}
+
+/* Defines styles for body:has(.portal-subtitle) .sport-card. */
+body:has(.portal-subtitle) .sport-card {
+  /* Sets the min-height property. */
+  min-height: 432px;
+  /* Sets the padding property. */
+  padding: 50px 32px 29px;
+  /* Sets the background property. */
+  background: #101416;
+  /* Sets the border property. */
+  border: 1px solid #252c2f;
+  /* Sets the border-radius property. */
+  border-radius: 0;
+  /* Sets the box-shadow property. */
+  box-shadow: none;
+  /* Sets the justify-content property. */
+  justify-content: flex-start;
+  /* Sets the overflow property. */
+  overflow: hidden;
+  /* Sets the transition property. */
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+
+/* Defines styles for html[data-theme="light"] body:has(.portal-subtitle) .sport-card. */
+html[data-theme="light"] body:has(.portal-subtitle) .sport-card {
+  /* Sets the background property. */
+  background: #fffefa;
+  /* Sets the border-color property. */
+  border-color: #d8ddd8;
+}
+
+/* Defines styles for body:has(.portal-subtitle) .sport-card::before. */
+body:has(.portal-subtitle) .sport-card::before {
+  /* Sets the inset property. */
+  inset: 0 auto 0 0;
+  /* Sets the width property. */
+  width: 5px;
+  /* Sets the height property. */
+  height: auto;
+  /* Sets the background property. */
+  background: #37d37c;
+}
+
+body:has(.portal-subtitle) .sport-card[data-sport="volleyball"]::before { background: #a77d25; }
+body:has(.portal-subtitle) .sport-card[data-sport="cricket"]::before { background: #2e70a5; }
+
+/* Defines styles for body:has(.portal-subtitle) .sport-card:hover. */
+body:has(.portal-subtitle) .sport-card:hover {
+  /* Sets the transform property. */
+  transform: translateY(-3px);
+  /* Sets the border-color property. */
+  border-color: #384145;
+}
+
+body:has(.portal-subtitle) .sport-card.locked { opacity: .92; }
+
+/* Defines styles for .sport-visual. */
+.sport-visual {
+  /* Sets the height property. */
+  height: 105px;
+  /* Sets the display property. */
+  display: flex;
+  /* Sets the align-items property. */
+  align-items: center;
+  /* Sets the font-size property. */
+  font-size: 4.2rem;
+  /* Sets the line-height property. */
+  line-height: 1;
+  /* Sets the filter property. */
+  filter: saturate(1.15);
+  /* Sets the transform-origin property. */
+  transform-origin: left center;
+  /* Sets the margin-bottom property. */
+  margin-bottom: 28px;
+}
+
+.sport-card.locked .sport-visual { filter: grayscale(.45) saturate(.7); opacity: .48; }
+
+/* Defines styles for .sport-lock. */
+.sport-lock {
+  /* Sets the position property. */
+  position: absolute;
+  /* Sets the top property. */
+  top: 35px;
+  /* Sets the right property. */
+  right: 29px;
+  /* Sets the font-size property. */
+  font-size: 1.15rem;
+  /* Sets the opacity property. */
+  opacity: .72;
+}
+
+/* Defines styles for .registered-chip. */
+.registered-chip {
+  /* Sets the display property. */
+  display: inline-flex;
+  /* Sets the width property. */
+  width: fit-content;
+  /* Sets the padding property. */
+  padding: 9px 11px;
+  /* Sets the background property. */
+  background: #45d77e;
+  /* Sets the color property. */
+  color: #06100a;
+  /* Sets the font-family property. */
+  font-family: Inter, sans-serif;
+  /* Sets the font-size property. */
+  font-size: .7rem;
+  /* Sets the font-weight property. */
+  font-weight: 900;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .02em;
+  /* Sets the text-transform property. */
+  text-transform: uppercase;
+}
+
+.sport-copy { margin-top: 27px; }
+
+/* Defines styles for body:has(.portal-subtitle) .sport-card h2. */
+body:has(.portal-subtitle) .sport-card h2 {
+  /* Sets the margin property. */
+  margin: 0;
+  /* Sets the color property. */
+  color: #f1f3f2;
+  /* Sets the font-family property. */
+  font-family: "Barlow Condensed", Impact, "Arial Narrow", sans-serif;
+  /* Sets the font-size property. */
+  font-size: clamp(2.7rem, 4vw, 3.35rem);
+  /* Sets the font-weight property. */
+  font-weight: 600;
+  /* Sets the line-height property. */
+  line-height: .95;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .025em;
+  /* Sets the text-transform property. */
+  text-transform: uppercase;
+}
+
+html[data-theme="light"] body:has(.portal-subtitle) .sport-card h2 { color: #141819; }
+
+body:has(.portal-subtitle) .sport-card.locked h2 { color: #858b8d; }
+
+/* Defines styles for body:has(.portal-subtitle) .sport-card p. */
+body:has(.portal-subtitle) .sport-card p {
+  /* Sets the max-width property. */
+  max-width: 440px;
+  /* Sets the margin property. */
+  margin: 30px 0 0;
+  /* Sets the color property. */
+  color: #9ba5a8;
+  /* Sets the font-size property. */
+  font-size: 1.03rem;
+  /* Sets the line-height property. */
+  line-height: 1.45;
+}
+
+html[data-theme="light"] body:has(.portal-subtitle) .sport-card p { color: #66706b; }
+body:has(.portal-subtitle) .sport-card.locked p { color: #545d60; }
+
+/* Defines styles for .sport-link, .sport-status. */
+.sport-link, .sport-status {
+  /* Sets the margin-top property. */
+  margin-top: auto;
+  /* Sets the padding-top property. */
+  padding-top: 35px;
+  /* Sets the font-family property. */
+  font-family: Inter, sans-serif;
+  /* Sets the font-size property. */
+  font-size: .75rem;
+  /* Sets the font-weight property. */
+  font-weight: 900;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .01em;
+  /* Sets the text-transform property. */
+  text-transform: uppercase;
+}
+
+.sport-link { color: #3dd87c; }
+.sport-link span { font-size: 1.05rem; margin-left: 2px; }
+.sport-link:hover { color: #72ed9e; }
+.sport-status { color: #a77919; }
+body:has(.portal-subtitle) .sport-card[data-sport="cricket"] .sport-status { color: #3277aa; }
+
+/* Defines styles for body:has(.portal-subtitle) .theme-toggle. */
+body:has(.portal-subtitle) .theme-toggle {
+  /* Sets the right property. */
+  right: 20px;
+  /* Sets the bottom property. */
+  bottom: 20px;
+  /* Sets the width property. */
+  width: 44px;
+  /* Sets the height property. */
+  height: 44px;
+  /* Sets the border-radius property. */
+  border-radius: 0;
+  /* Sets the background property. */
+  background: #111619;
+  /* Sets the border-color property. */
+  border-color: #2d3639;
+  /* Sets the box-shadow property. */
+  box-shadow: none;
+}
+
+/* Defines styles for html[data-theme="light"] body:has(.portal-subtitle) .theme-toggle. */
+html[data-theme="light"] body:has(.portal-subtitle) .theme-toggle {
+  /* Sets the background property. */
+  background: #fffefa;
+  /* Sets the color property. */
+  color: #111516;
+}
+
+@media (max-width: 950px) {
+  body:has(.portal-subtitle) .card-grid { grid-template-columns: 1fr; }
+  body:has(.portal-subtitle) .sport-card { min-height: 330px; }
+  body:has(.portal-subtitle) .page-heading h1 { font-size: clamp(3.5rem, 12vw, 5.5rem); }
+}
+
+@media (max-width: 580px) {
+  body:has(.portal-subtitle) .topbar { padding: 0 18px; }
+  body:has(.portal-subtitle) .container { width: min(100% - 28px, 1530px); padding-top: 42px; }
+  body:has(.portal-subtitle) .page-heading { margin-bottom: 36px; }
+  body:has(.portal-subtitle) .page-heading h1 { font-size: clamp(3.1rem, 17vw, 4.4rem); }
+  body:has(.portal-subtitle) .sport-card { min-height: 350px; padding: 35px 25px 25px; }
+}
+
+
+/* =========================================================
+   SPORTS CLUB V3 — QUALITY-OF-LIFE / FOCUS LAYER
+   ========================================================= */
+
+.brand { display:inline-flex; align-items:center; gap:10px; }
+.brand::before { display:none; }
+/* Defines styles for .brand-mark. */
+.brand-mark {
+  /* Sets the display property. */
+  display:inline-grid; place-items:center;
+  /* Sets the width property. */
+  width:34px; height:34px;
+  /* Sets the background property. */
+  background:var(--text); color:var(--bg);
+  /* Sets the font-family property. */
+  font-family:"Barlow Condensed",sans-serif;
+  /* Sets the font-weight property. */
+  font-weight:900; font-size:1rem;
+  /* Sets the border property. */
+  border:2px solid var(--text);
+}
+.brand-word { letter-spacing:.04em; }
+
+/* Defines styles for .quick-nav. */
+.quick-nav {
+  /* Sets the position property. */
+  position:sticky;
+  /* Sets the top property. */
+  top:62px;
+  /* Sets the z-index property. */
+  z-index:8;
+  /* Sets the display property. */
+  display:flex;
+  /* Sets the gap property. */
+  gap:6px;
+  /* Sets the overflow-x property. */
+  overflow-x:auto;
+  /* Sets the padding property. */
+  padding:7px;
+  /* Sets the margin property. */
+  margin:0 0 22px;
+  /* Sets the background property. */
+  background:color-mix(in srgb, var(--card) 96%, transparent);
+  /* Sets the border property. */
+  border:1px solid var(--border);
+  /* Sets the box-shadow property. */
+  box-shadow:0 4px 0 rgba(0,0,0,.06);
+  /* Sets the scrollbar-width property. */
+  scrollbar-width:none;
+}
+.quick-nav::-webkit-scrollbar { display:none; }
+/* Defines styles for .quick-nav a. */
+.quick-nav a {
+  /* Sets the flex property. */
+  flex:0 0 auto;
+  /* Sets the padding property. */
+  padding:9px 12px;
+  /* Sets the font-size property. */
+  font-size:.68rem;
+  /* Sets the font-weight property. */
+  font-weight:900;
+  /* Sets the letter-spacing property. */
+  letter-spacing:.08em;
+  /* Sets the color property. */
+  color:var(--muted);
+  /* Sets the border property. */
+  border:1px solid transparent;
+}
+.quick-nav a:hover,
+/* Defines styles for .quick-nav a.active. */
+.quick-nav a.active {
+  /* Sets the color property. */
+  color:var(--text);
+  /* Sets the background property. */
+  background:var(--green-soft);
+  /* Sets the border-color property. */
+  border-color:var(--green);
+}
+.dashboard-section { scroll-margin-top:135px; }
+/* Defines styles for .section-kicker. */
+.section-kicker {
+  /* Sets the display property. */
+  display:block;
+  /* Sets the margin-bottom property. */
+  margin-bottom:4px;
+  /* Sets the color property. */
+  color:var(--green);
+  /* Sets the font-size property. */
+  font-size:.62rem;
+  /* Sets the font-weight property. */
+  font-weight:900;
+  /* Sets the letter-spacing property. */
+  letter-spacing:.14em;
+  /* Sets the text-transform property. */
+  text-transform:uppercase;
+}
+
+.stat-card:nth-child(1) { border-top-color:#18a957; }
+.stat-card:nth-child(2) { border-top-color:#3287d8; }
+.stat-card:nth-child(3) { border-top-color:#f28a2e; }
+.stat-card:nth-child(4) { border-top-color:#9a67d8; }
+.stat-card strong { font-family:"Barlow Condensed",sans-serif; font-size:2.45rem; letter-spacing:.01em; }
+.stat-card:nth-child(1) strong { color:var(--green); }
+.stat-card:nth-child(2) strong { color:#3287d8; }
+.stat-card:nth-child(3) strong { color:#f28a2e; }
+.stat-card:nth-child(4) strong { color:#9a67d8; }
+
+.btn { min-height:40px; }
+.btn:not(.primary):hover { background:var(--green-soft); }
+.btn.primary { position:relative; overflow:hidden; }
+/* Defines styles for .btn.primary::after. */
+.btn.primary::after {
+  /* Sets the content property. */
+  content:""; position:absolute; inset:0;
+  /* Sets the background property. */
+  background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.22),transparent 70%);
+  /* Sets the transform property. */
+  transform:translateX(-120%);
+  /* Sets the transition property. */
+  transition:transform .45s ease;
+}
+.btn.primary:hover::after { transform:translateX(120%); }
+.btn-lg { padding:13px 20px; min-height:46px; }
+
+.tag { border:1px solid var(--border); }
+.tag.success { border-color:rgba(24,169,87,.35); }
+.tag.warning { border-color:rgba(245,138,46,.35); }
+.tag.danger { border-color:rgba(216,60,77,.35); }
+
+/* Make performance values visually scannable */
+.metric-good { color:var(--green); font-weight:900; }
+.metric-info { color:#3287d8; font-weight:900; }
+.metric-warn { color:#f28a2e; font-weight:900; }
+.metric-bad { color:var(--danger); font-weight:900; }
+
+/* Defines styles for .table-wrap tbody td:last-child. */
+.table-wrap tbody td:last-child {
+  /* Sets the font-weight property. */
+  font-weight:900;
+}
+
+/* ---------- Fresh homepage ---------- */
+.home-topbar {
+  /* Sets the position property. */
+  position:relative; z-index:5;
+  /* Sets the display property. */
+  display:flex; align-items:center; justify-content:space-between;
+  /* Sets the padding property. */
+  padding:18px max(22px, calc((100% - 1240px)/2));
+}
+/* Defines styles for .home-page. */
+.home-page {
+  /* Sets the width property. */
+  width:min(1240px, calc(100% - 36px));
+  /* Sets the margin property. */
+  margin:0 auto;
+  /* Sets the padding property. */
+  padding:28px 0 80px;
+}
+/* Defines styles for .home-hero. */
+.home-hero {
+  /* Sets the min-height property. */
+  min-height:570px;
+  /* Sets the display property. */
+  display:grid;
+  /* Sets the grid-template-columns property. */
+  grid-template-columns:1.05fr .95fr;
+  /* Sets the align-items property. */
+  align-items:center;
+  /* Sets the gap property. */
+  gap:40px;
+  /* Sets the padding property. */
+  padding:55px 5vw;
+  background:
+    radial-gradient(circle at 72% 35%, rgba(54,216,120,.16), transparent 25%),
+    linear-gradient(135deg,var(--card),var(--bg-soft));
+  /* Sets the border property. */
+  border:1px solid var(--border);
+  /* Sets the border-top property. */
+  border-top:6px solid var(--green);
+  /* Sets the overflow property. */
+  overflow:hidden;
+  /* Sets the position property. */
+  position:relative;
+}
+.home-hero-copy { max-width:680px; }
+/* Defines styles for .eyebrow. */
+.eyebrow {
+  /* Sets the display property. */
+  display:inline-block;
+  /* Sets the color property. */
+  color:var(--green);
+  /* Sets the font-family property. */
+  font-family:"Barlow Condensed",sans-serif;
+  /* Sets the font-weight property. */
+  font-weight:900;
+  /* Sets the font-size property. */
+  font-size:.78rem;
+  /* Sets the letter-spacing property. */
+  letter-spacing:.16em;
+}
+/* Defines styles for .home-hero h1. */
+.home-hero h1 {
+  /* Sets the font-family property. */
+  font-family:"Barlow Condensed",sans-serif;
+  /* Sets the font-size property. */
+  font-size:clamp(4.4rem,10vw,8.2rem);
+  /* Sets the line-height property. */
+  line-height:.78;
+  /* Sets the letter-spacing property. */
+  letter-spacing:-.02em;
+  /* Sets the margin property. */
+  margin:18px 0 24px;
+}
+.home-hero h1 span { color:var(--green); }
+.home-hero p { max-width:590px; color:var(--muted); font-size:1.08rem; }
+.home-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+/* Defines styles for .home-visual. */
+.home-visual {
+  /* Sets the min-height property. */
+  min-height:390px; position:relative; display:grid; place-items:center;
+}
+/* Defines styles for .home-emoji. */
+.home-emoji {
+  /* Sets the font-size property. */
+  font-size:clamp(10rem,20vw,16rem);
+  /* Sets the line-height property. */
+  line-height:1;
+  /* Sets the filter property. */
+  filter:drop-shadow(0 20px 25px rgba(0,0,0,.18));
+  /* Sets the transform property. */
+  transform:rotate(-8deg);
+}
+/* Defines styles for .home-orbit. */
+.home-orbit {
+  /* Sets the position property. */
+  position:absolute; display:grid; place-items:center;
+  /* Sets the width property. */
+  width:76px; height:76px;
+  /* Sets the background property. */
+  background:var(--card); border:1px solid var(--border);
+  /* Sets the font-size property. */
+  font-size:2.6rem; box-shadow:var(--shadow);
+}
+.orbit-one { top:25px; right:12%; transform:rotate(8deg); }
+.orbit-two { bottom:28px; left:12%; transform:rotate(-8deg); }
+/* Defines styles for .home-visual-label. */
+.home-visual-label {
+  /* Sets the position property. */
+  position:absolute; right:4%; bottom:5%;
+  /* Sets the font-family property. */
+  font-family:"Barlow Condensed",sans-serif;
+  /* Sets the font-weight property. */
+  font-weight:900; letter-spacing:.12em; color:var(--muted);
+}
+/* Defines styles for .home-stat-strip. */
+.home-stat-strip {
+  /* Sets the display property. */
+  display:grid; grid-template-columns:repeat(4,1fr);
+  /* Sets the margin-top property. */
+  margin-top:18px; border:1px solid var(--border); background:var(--card);
+}
+/* Defines styles for .home-stat-strip > div. */
+.home-stat-strip > div {
+  /* Sets the padding property. */
+  padding:22px; border-right:1px solid var(--border);
+}
+.home-stat-strip > div:last-child { border-right:0; }
+/* Defines styles for .home-stat-strip strong. */
+.home-stat-strip strong {
+  /* Sets the display property. */
+  display:block; font-family:"Barlow Condensed",sans-serif;
+  /* Sets the font-size property. */
+  font-size:2.5rem; line-height:1; color:var(--green);
+}
+/* Defines styles for .home-stat-strip span. */
+.home-stat-strip span {
+  /* Sets the font-size property. */
+  font-size:.66rem; font-weight:900; letter-spacing:.12em; color:var(--muted);
+}
+/* Defines styles for .home-intro. */
+.home-intro {
+  /* Sets the display property. */
+  display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  /* Sets the padding property. */
+  padding:78px 4vw 40px;
+}
+/* Defines styles for .home-intro h2. */
+.home-intro h2 {
+  /* Sets the font-family property. */
+  font-family:"Barlow Condensed",sans-serif;
+  /* Sets the font-size property. */
+  font-size:clamp(2.5rem,5vw,4.2rem);
+  /* Sets the line-height property. */
+  line-height:.9; text-transform:uppercase;
+}
+.home-intro p { color:var(--muted); font-size:1.03rem; max-width:560px; }
+.home-feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+/* Defines styles for .home-feature. */
+.home-feature {
+  /* Sets the padding property. */
+  padding:28px; min-height:190px;
+  /* Sets the border property. */
+  border:1px solid var(--border); background:var(--card);
+  /* Sets the border-top property. */
+  border-top:4px solid var(--green);
+}
+.home-feature:nth-child(2) { border-top-color:#3287d8; }
+.home-feature:nth-child(3) { border-top-color:#f28a2e; }
+.home-feature > span { font-size:2.8rem; }
+.home-feature h3 { margin:18px 0 8px; font-family:"Barlow Condensed",sans-serif; font-size:1.5rem; }
+.home-feature p { margin:0; color:var(--muted); }
+
+@media (max-width:850px) {
+  .home-hero { grid-template-columns:1fr; padding:42px 30px; }
+  .home-visual { min-height:280px; }
+  .home-stat-strip { grid-template-columns:repeat(2,1fr); }
+  .home-stat-strip > div:nth-child(2) { border-right:0; }
+  .home-stat-strip > div { border-bottom:1px solid var(--border); }
+  .home-intro, .home-feature-grid { grid-template-columns:1fr; }
+}
+@media (max-width:580px) {
+  .quick-nav { top:57px; margin-bottom:16px; }
+  .home-page { width:min(100% - 22px,1240px); }
+  .home-hero { padding:34px 22px; min-height:auto; }
+  .home-hero h1 { font-size:4.3rem; }
+  .home-visual { min-height:220px; }
+  .home-emoji { font-size:9rem; }
+  .home-stat-strip > div { padding:17px; }
+  .home-intro { padding:50px 8px 28px; }
+}
+
+/* =========================================================
+   FORM / RESPONSIVE POLISH
+   Fixes the registration forms and tightens form-heavy pages
+   without changing the application's functionality.
+   ========================================================= */
+
+/* Defines styles for .auth-page. */
+.auth-page {
+  /* Sets the padding property. */
+  padding: 32px 18px;
+  /* Sets the align-items property. */
+  align-items: start;
+}
+
+/* Defines styles for .auth-card. */
+.auth-card {
+  /* Sets the width property. */
+  width: min(760px, 100%);
+  /* Sets the max-width property. */
+  max-width: 760px;
+  /* Sets the padding property. */
+  padding: 34px 38px 38px;
+  /* Sets the margin property. */
+  margin: 20px auto;
+}
+
+/* Defines styles for .auth-card h1. */
+.auth-card h1 {
+  /* Sets the font-size property. */
+  font-size: clamp(2.35rem, 5vw, 3.35rem);
+  /* Sets the margin property. */
+  margin: 12px 0 10px;
+}
+
+/* Defines styles for .auth-card > .muted. */
+.auth-card > .muted {
+  /* Sets the margin property. */
+  margin: 0 0 24px;
+  /* Sets the font-size property. */
+  font-size: .94rem;
+  /* Sets the line-height property. */
+  line-height: 1.55;
+}
+
+.back-link { margin-bottom: 18px; font-size: .86rem; }
+
+/* Defines styles for .form-grid. */
+.form-grid {
+  /* Sets the display property. */
+  display: grid;
+  /* Sets the grid-template-columns property. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Sets the gap property. */
+  gap: 16px 18px;
+  /* Sets the margin property. */
+  margin: 0;
+}
+
+.form-grid > .field { min-width: 0; }
+.field-full,
+.form-grid > .form-section-title,
+.form-grid > .form-help,
+.form-grid > .form-actions,
+.form-grid > .message { grid-column: 1 / -1; }
+
+/* Defines styles for .field. */
+.field {
+  /* Sets the display property. */
+  display: flex;
+  /* Sets the min-width property. */
+  min-width: 0;
+  /* Sets the flex-direction property. */
+  flex-direction: column;
+}
+
+/* Defines styles for .field label. */
+.field label {
+  /* Sets the margin property. */
+  margin: 0 0 7px;
+  /* Sets the font-size property. */
+  font-size: .72rem;
+  /* Sets the line-height property. */
+  line-height: 1.2;
+  /* Sets the letter-spacing property. */
+  letter-spacing: .06em;
+}
+
+.field input,
+.field select,
+/* Defines styles for .field textarea. */
+.field textarea {
+  /* Sets the min-width property. */
+  min-width: 0;
+}
+
+/* Defines styles for .field small. */
+.field small {
+  /* Sets the margin-top property. */
+  margin-top: 5px;
+  /* Sets the color property. */
+  color: var(--muted);
+  /* Sets the font-size property. */
+  font-size: .72rem;
+  /* Sets the line-height property. */
+  line-height: 1.35;
+}
+
+/* Defines styles for .optional. */
+.optional {
+  /* Sets the color property. */
+  color: var(--muted);
+  /* Sets the font-size property. */
+  font-size: .68rem;
+  /* Sets the font-weight property. */
+  font-weight: 700;
+  /* Sets the letter-spacing property. */
+  letter-spacing: 0;
+  /* Sets the text-transform property. */
+  text-transform: none;
+}
+
+/* Defines styles for input, select, textarea. */
+input, select, textarea {
+  /* Sets the min-height property. */
+  min-height: 44px;
+  /* Sets the padding property. */
+  padding: 10px 12px;
+  /* Sets the border-radius property. */
+  border-radius: 5px;
+  /* Sets the font-size property. */
+  font-size: .94rem;
+}
+
+textarea { min-height: 112px; line-height: 1.5; }
+
+/* Defines styles for .form-section-title. */
+.form-section-title {
+  /* Sets the grid-column property. */
+  grid-column: 1 / -1;
+  /* Sets the padding property. */
+  padding: 0 0 8px;
+  /* Sets the margin property. */
+  margin: 8px 0 0;
+  /* Sets the border-bottom property. */
+  border-bottom: 2px solid var(--border);
+  /* Sets the font-size property. */
+  font-size: .98rem;
+  /* Sets the line-height property. */
+  line-height: 1.2;
+}
+
+/* Defines styles for .form-help. */
+.form-help {
+  /* Sets the margin-top property. */
+  margin-top: -7px;
+}
+
+/* Defines styles for .form-help p. */
+.form-help p {
+  /* Sets the margin property. */
+  margin: 0;
+  /* Sets the font-size property. */
+  font-size: .83rem;
+  /* Sets the line-height property. */
+  line-height: 1.45;
+}
+
+/* Defines styles for .registration-form .stack. */
+.registration-form .stack {
+  /* Sets the display property. */
+  display: grid;
+  /* Sets the grid-template-columns property. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Sets the gap property. */
+  gap: 10px;
+}
+
+/* Defines styles for .registration-form .mini-card. */
+.registration-form .mini-card {
+  /* Sets the padding property. */
+  padding: 13px 14px;
+  /* Sets the min-width property. */
+  min-width: 0;
+  /* Sets the background property. */
+  background: var(--bg-soft);
+  /* Sets the transition property. */
+  transition: border-color .15s ease, background .15s ease, transform .12s ease;
+}
+
+/* Defines styles for .registration-form .mini-card:hover. */
+.registration-form .mini-card:hover {
+  /* Sets the border-color property. */
+  border-color: var(--green);
+  /* Sets the transform property. */
+  transform: translateY(-1px);
+}
+
+/* Defines styles for .registration-form .mini-card > label. */
+.registration-form .mini-card > label {
+  /* Sets the display property. */
+  display: flex;
+  /* Sets the align-items property. */
+  align-items: center;
+  /* Sets the gap property. */
+  gap: 9px;
+  /* Sets the margin property. */
+  margin: 0;
+  /* Sets the min-height property. */
+  min-height: 28px;
+  /* Sets the font-size property. */
+  font-size: .78rem;
+  /* Sets the line-height property. */
+  line-height: 1.25;
+  /* Sets the cursor property. */
+  cursor: pointer;
+}
+
+/* Defines styles for .registration-form .mini-card input[type="checkbox"]. */
+.registration-form .mini-card input[type="checkbox"] {
+  /* Sets the width property. */
+  width: 18px;
+  /* Sets the height property. */
+  height: 18px;
+  /* Sets the min-height property. */
+  min-height: 18px;
+  /* Sets the flex property. */
+  flex: 0 0 18px;
+  /* Sets the margin property. */
+  margin: 0;
+  /* Sets the accent-color property. */
+  accent-color: var(--green);
+}
+
+/* Defines styles for .registration-form .mini-card:has(input:checked). */
+.registration-form .mini-card:has(input:checked) {
+  /* Sets the border-color property. */
+  border-color: var(--green);
+  /* Sets the background property. */
+  background: var(--green-soft);
+  /* Sets the box-shadow property. */
+  box-shadow: inset 3px 0 0 var(--green);
+}
+
+/* Defines styles for .registration-form .mini-card .stack. */
+.registration-form .mini-card .stack {
+  /* Sets the grid-template-columns property. */
+  grid-template-columns: 1fr;
+  /* Sets the gap property. */
+  gap: 7px;
+  /* Sets the margin-top property. */
+  margin-top: 10px;
+  /* Sets the padding-top property. */
+  padding-top: 10px;
+  /* Sets the border-top property. */
+  border-top: 1px solid var(--border);
+}
+
+/* Defines styles for .registration-form .mini-card .stack label. */
+.registration-form .mini-card .stack label {
+  /* Sets the margin property. */
+  margin: 0 0 5px;
+  /* Sets the font-size property. */
+  font-size: .68rem;
+}
+
+/* Defines styles for .registration-form .mini-card .stack select. */
+.registration-form .mini-card .stack select {
+  /* Sets the min-height property. */
+  min-height: 40px;
+  /* Sets the font-size property. */
+  font-size: .86rem;
+}
+
+/* Defines styles for .registration-form .btn.full. */
+.registration-form .btn.full {
+  /* Sets the margin-top property. */
+  margin-top: 2px;
+}
+
+/* Defines styles for .registration-form .message. */
+.registration-form .message {
+  /* Sets the margin property. */
+  margin: 0;
+}
+
+/* Standalone login forms */
+.auth-card > form:not(.form-grid) {
+  /* Sets the display property. */
+  display: grid;
+  /* Sets the gap property. */
+  gap: 8px;
+}
+
+/* Defines styles for .auth-card > form:not(.form-grid) label. */
+.auth-card > form:not(.form-grid) label {
+  /* Sets the margin property. */
+  margin: 8px 0 0;
+  /* Sets the font-size property. */
+  font-size: .72rem;
+}
+
+.auth-card > form:not(.form-grid) input,
+/* Defines styles for .auth-card > form:not(.form-grid) select. */
+.auth-card > form:not(.form-grid) select {
+  /* Sets the margin-bottom property. */
+  margin-bottom: 5px;
+}
+
+/* Defines styles for .auth-switch. */
+.auth-switch {
+  /* Sets the margin property. */
+  margin: 18px 0 0;
+  /* Sets the font-size property. */
+  font-size: .84rem;
+  /* Sets the line-height property. */
+  line-height: 1.5;
+}
+
+/* Dashboard/admin forms: compact fields instead of oversized blocks. */
+.container .form-grid:not(.registration-form) {
+  /* Sets the grid-template-columns property. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Sets the gap property. */
+  gap: 10px;
+}
+
+.container .form-grid:not(.registration-form) > input,
+.container .form-grid:not(.registration-form) > select,
+/* Defines styles for .container .form-grid:not(.registration-form) > textarea. */
+.container .form-grid:not(.registration-form) > textarea {
+  /* Sets the min-width property. */
+  min-width: 0;
+}
+
+/* Defines styles for .container .form-grid:not(.registration-form) .form-actions. */
+.container .form-grid:not(.registration-form) .form-actions {
+  /* Sets the grid-column property. */
+  grid-column: 1 / -1;
+}
+
+.container .form-grid:not(.registration-form) input,
+.container .form-grid:not(.registration-form) select,
+/* Defines styles for .container .form-grid:not(.registration-form) textarea. */
+.container .form-grid:not(.registration-form) textarea {
+  /* Sets the min-height property. */
+  min-height: 42px;
+}
+
+/* Defines styles for .inline-form. */
+.inline-form {
+  /* Sets the gap property. */
+  gap: 8px;
+  /* Sets the margin-bottom property. */
+  margin-bottom: 14px;
+}
+
+.inline-form > * { min-width: 0; }
+
+.panel { padding: 20px; margin-bottom: 16px; }
+.panel-title { margin-bottom: 14px; }
+
+@media (max-width: 760px) {
+  /* Defines styles for .auth-card. */
+  .auth-card {
+    /* Sets the padding property. */
+    padding: 28px 24px 30px;
+    /* Sets the margin property. */
+    margin: 10px auto;
+  }
+
+  .registration-form,
+  /* Defines styles for .container .form-grid:not(.registration-form). */
+  .container .form-grid:not(.registration-form) {
+    /* Sets the grid-template-columns property. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Defines styles for .registration-form .stack. */
+  .registration-form .stack {
+    /* Sets the grid-template-columns property. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  body, button, input, select, textarea { font-size: 14px; }
+
+  /* Defines styles for .auth-page. */
+  .auth-page {
+    /* Sets the padding property. */
+    padding: 14px 10px 30px;
+  }
+
+  /* Defines styles for .auth-card. */
+  .auth-card {
+    /* Sets the padding property. */
+    padding: 23px 17px 24px;
+    /* Sets the margin property. */
+    margin: 0;
+    /* Sets the border-top-width property. */
+    border-top-width: 4px;
+  }
+
+  /* Defines styles for .auth-card h1. */
+  .auth-card h1 {
+    /* Sets the font-size property. */
+    font-size: clamp(2rem, 10vw, 2.65rem);
+    /* Sets the line-height property. */
+    line-height: .95;
+    /* Sets the margin property. */
+    margin: 10px 0 9px;
+  }
+
+  /* Defines styles for .auth-card > .muted. */
+  .auth-card > .muted {
+    /* Sets the margin-bottom property. */
+    margin-bottom: 19px;
+    /* Sets the font-size property. */
+    font-size: .86rem;
+  }
+
+  .form-grid,
+  .registration-form,
+  /* Defines styles for .container .form-grid:not(.registration-form). */
+  .container .form-grid:not(.registration-form) {
+    /* Sets the grid-template-columns property. */
+    grid-template-columns: 1fr;
+    /* Sets the gap property. */
+    gap: 13px;
+  }
+
+  /* Defines styles for .form-section-title. */
+  .form-section-title {
+    /* Sets the margin-top property. */
+    margin-top: 5px;
+    /* Sets the padding-bottom property. */
+    padding-bottom: 7px;
+    /* Sets the font-size property. */
+    font-size: .9rem;
+  }
+
+  .form-help { margin-top: -5px; }
+  .form-help p { font-size: .78rem; }
+
+  /* Defines styles for .registration-form .stack. */
+  .registration-form .stack {
+    /* Sets the grid-template-columns property. */
+    grid-template-columns: 1fr 1fr;
+    /* Sets the gap property. */
+    gap: 8px;
+  }
+
+  /* Defines styles for .registration-form .mini-card. */
+  .registration-form .mini-card {
+    /* Sets the padding property. */
+    padding: 11px 10px;
+  }
+
+  /* Defines styles for .registration-form .mini-card > label. */
+  .registration-form .mini-card > label {
+    /* Sets the gap property. */
+    gap: 7px;
+    /* Sets the font-size property. */
+    font-size: .72rem;
+  }
+
+  /* Defines styles for .registration-form .mini-card .stack. */
+  .registration-form .mini-card .stack {
+    /* Sets the grid-template-columns property. */
+    grid-template-columns: 1fr;
+  }
+
+  /* Defines styles for input, select. */
+  input, select {
+    /* Sets the min-height property. */
+    min-height: 42px;
+    /* Sets the padding property. */
+    padding: 9px 10px;
+  }
+
+  textarea { min-height: 100px; }
+
+  .btn.full { margin-top: 5px; }
+
+  .panel { padding: 15px; }
+  .panel-title { align-items: flex-start; }
+  .panel-title h2 { font-size: 1rem; }
+
+  .inline-form { display: grid; grid-template-columns: 1fr; }
+  .inline-form > * { width: 100%; flex: none; }
+
+  /* Defines styles for .quick-nav. */
+  .quick-nav {
+    /* Sets the margin-left property. */
+    margin-left: -2px;
+    /* Sets the margin-right property. */
+    margin-right: -2px;
+  }
+
+  .quick-nav a { padding: 8px 10px; font-size: .62rem; }
+
+  .theme-toggle { width: 42px; height: 42px; }
+}
+
+
+/* ================================================================
+   POLISH / UX IMPROVEMENTS
+   These rules extend the existing design without changing the data
+   model or backend behavior.
+   ================================================================ */
+
+/* Keep dashboard content readable on wide screens. */
+.container { max-width: 1180px; }
+
+/* Give the student dashboard an at-a-glance summary before the detailed sections. */
+.student-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 0 0 18px;
+}
+
+.summary-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--green);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, var(--card-2), var(--card));
+}
+
+.summary-card span {
+  display: block;
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.summary-card strong {
+  display: block;
+  margin: 7px 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.35rem;
+}
+
+.summary-card small { color: var(--muted); line-height: 1.4; }
+
+/* Keep the coach dashboard organized even though it intentionally remains one page. */
+.coach-workflow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 0 0 18px;
+}
+
+.coach-workflow > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-2);
+}
+
+.coach-workflow span {
+  grid-row: 1 / span 2;
+  color: var(--green);
+  font-size: .72rem;
+  font-weight: 900;
+}
+
+.coach-workflow strong { font-size: .78rem; letter-spacing: .05em; }
+.coach-workflow small { color: var(--muted); font-size: .75rem; }
+
+.admin-filter {
+  display: grid;
+  grid-template-columns: auto minmax(220px, 420px);
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+}
+
+.admin-filter label { font-size: .72rem; }
+.admin-filter input { margin: 0; }
+
+/* Short descriptions sit below section titles without making the forms noisy. */
+.panel-title > div { min-width: 0; }
+.panel-help { margin: 3px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.4; }
+
+/* Make the section navigation easier to use on long management pages. */
+.quick-nav { position: sticky; top: 8px; z-index: 20; backdrop-filter: blur(10px); }
+
+/* Prevent long tables from forcing the page wider on phones. */
+.table-wrap { max-width: 100%; scrollbar-width: thin; }
+.table-wrap tbody tr[hidden] { display: none; }
+
+/* Make form controls easier to scan and tap. */
+input, select, textarea { min-height: 42px; }
+textarea { min-height: 110px; resize: vertical; }
+
+/* Empty states are easier to notice when they have a little visual breathing room. */
+.table-wrap > .muted,
+.cards-list > .muted,
+.stack > .muted { display: block; padding: 16px; margin: 0; }
+
+@media (max-width: 980px) {
+  .student-summary,
+  .coach-workflow { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .student-summary,
+  .coach-workflow { grid-template-columns: 1fr; }
+  .admin-filter { grid-template-columns: 1fr; }
+  .summary-card strong { white-space: normal; }
+  .quick-nav { top: 0; }
+}
+
+
+/* Password visibility control added by app.js. */
+.password-field { position: relative; display: block; min-width: 0; }
+.password-field input { width: 100%; padding-right: 64px; box-sizing: border-box; }
+.password-toggle {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-height: 30px;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-2);
+  color: var(--muted);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+  cursor: pointer;
+}
+.password-toggle:hover { color: var(--green); border-color: var(--green); }
+.password-toggle:focus-visible { outline: 3px solid rgba(54,216,120,.25); outline-offset: 2px; }
+
+/* Accessible coach performance form */
+.performance-form { max-width: 100%; margin: 1rem 0 1.5rem; }
+.performance-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin:1rem 0; }
+.performance-grid label,.performance-notes {display:flex;flex-direction:column;gap:.45rem;font-weight:600;}
+.performance-grid input,.performance-grid select,.performance-notes input,.performance-notes textarea {width:100%;box-sizing:border-box;padding:.75rem;border-radius:.6rem;border:1px solid #8493a5;background:var(--surface,#fff);color:var(--text,#182535);font:inherit;}
+.performance-notes {margin:1rem 0;}
+.performance-grid input:focus,.performance-grid select:focus,.performance-notes input:focus,.performance-notes textarea:focus {outline:2px solid #2683ce;outline-offset:2px;}
+
+/* v3 dashboard progressive enhancements */
+.coach-v3 { --v3-accent:#137b61; --v3-line:#dce7e3; }
+.coach-v3 .container { max-width:1320px; margin-left:clamp(240px,21vw,290px); padding:24px clamp(16px,3vw,42px); }
+.coach-v3 .topbar { position:sticky; top:0; z-index:60; }
+.coach-v3 .coach-nav { position:fixed; left:0; top:68px; bottom:0; width:clamp(220px,20vw,270px); z-index:50; display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:5px; overflow-y:auto; margin:0; padding:28px 14px; border-right:1px solid var(--v3-line); border-radius:0; background:var(--surface,#fff); box-shadow:3px 0 18px #152f2410; }
+.coach-v3 .coach-nav a { display:block; padding:13px 15px; border-radius:12px; text-decoration:none; font-weight:650; letter-spacing:.035em; }
+.coach-v3 .coach-nav a.active,.coach-v3 .coach-nav a:hover { background:#137b6120; color:#137b61; }
+.coach-v3 .dashboard-section { scroll-margin-top:90px; }
+.coach-v3 .panel { border:1px solid var(--v3-line); border-radius:18px; }
+.coach-v3 input:focus-visible,.coach-v3 select:focus-visible,.coach-v3 button:focus-visible,.coach-v3 a:focus-visible { outline:3px solid #137b61;outline-offset:2px; }
+.coach-menu-toggle { display:none; }
+.coach-toast { position:fixed; bottom:20px; right:20px; z-index:100; pointer-events:none; }
+.coach-v3 .analytics-bars { display:grid;gap:12px;margin:22px 0; }
+.coach-v3 .analytics-row { display:grid;grid-template-columns:110px 1fr 90px;align-items:center;gap:12px; }
+.coach-v3 .analytics-track { height:12px;border-radius:20px;background:#dce7e3;overflow:hidden; }
+.coach-v3 .analytics-track div { height:100%;border-radius:20px;background:var(--v3-accent); }
+.coach-v3 .calendar-grid { display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:16px; }
+.coach-v3 .calendar-head { text-align:center;font-weight:700;padding:8px 0; }
+.coach-v3 .calendar-cell { border:1px solid var(--v3-line);border-radius:10px;min-height:90px;padding:8px;min-width:0; }
+.coach-v3 .calendar-event { background:#137b6120;color:inherit;padding:5px;border-radius:5px;margin-top:5px;font-size:.77rem;overflow-wrap:anywhere; }
+.coach-v3 .next-player-option { display:flex;align-items:center;gap:7px; }
+.coach-v3 .next-player-option input { width:auto; }
+@media(max-width:900px){ .coach-v3 .container{margin-left:0;padding:18px;} .coach-menu-toggle{display:block;position:fixed;bottom:18px;left:18px;z-index:75;box-shadow:0 5px 18px #0003;} .coach-v3 .coach-nav{top:0;left:0;bottom:0;width:min(82vw,310px);transform:translateX(-110%);transition:transform .2s ease;z-index:70;padding-top:26px;} .coach-v3 .coach-nav.is-open{transform:translateX(0);} }
+@media(max-width:600px){.coach-v3 .calendar-cell{min-height:56px;padding:4px;font-size:.75rem}.coach-v3 .calendar-event{font-size:.64rem}.coach-v3 .analytics-row{grid-template-columns:85px 1fr 68px;gap:6px}.coach-v3 .table-wrap{overflow-x:auto}.coach-v3 .form-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.coach-v3 *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* v4 focused coach experience */
+body.coach-focused .dashboard-section[hidden],body.coach-focused #coach-overview[hidden]{display:none!important}
+.coach-view-heading{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin:1rem 0 1.5rem}
+.coach-view-heading h1{margin:.2rem 0;font-size:clamp(1.5rem,3vw,2.2rem)}
+.coach-view-heading .muted{margin:0}
+.field-label{display:block;font-size:.82rem;font-weight:650;margin:.6rem 0 .22rem;letter-spacing:.01em}
+.coach-focused .dashboard-section{animation:coachAppear .18s ease-out}
+@keyframes coachAppear{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.coach-overview-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+.calendar-agenda{display:none;gap:.6rem}.agenda-item{display:flex;justify-content:space-between;gap:.8rem;padding:.85rem 1rem;border:1px solid var(--border,#d4dce2);border-radius:.7rem}.agenda-item span{overflow-wrap:anywhere}
+.coach-focused input:focus-visible,.coach-focused select:focus-visible,.coach-focused button:focus-visible,.coach-focused a:focus-visible{outline:3px solid #249b78;outline-offset:3px}
+.coach-focused .inline-form{align-items:end}.coach-focused .inline-form .field-label{align-self:center}
+@media(max-width:720px){.coach-view-heading{align-items:flex-start}.coach-view-heading h1{font-size:1.55rem}.calendar-grid{display:none!important}.calendar-agenda{display:grid}.agenda-item{flex-direction:column;gap:.25rem}.coach-overview-actions .btn{flex:1 1 100%}}
+@media(prefers-reduced-motion:reduce){.coach-focused .dashboard-section{animation:none!important}}
+/* Student v5: progressive enhancement of the existing responsive design */
+.student-view[hidden], .registration-form [hidden] { display:none !important; }
+.student-nav { position:sticky;top:0;z-index:8;background:var(--surface, #fff); }
+.student-nav a[aria-current="page"] { font-weight:800; }
+.student-menu-toggle { display:none; }
+.student-filter-bar {display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0 20px;}
+.student-filter-bar select {max-width:260px;padding:10px 12px;border:1px solid #9ca3af;border-radius:10px;background:var(--surface,#fff);color:inherit;}
+.student-session-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:16px;}
+.student-session-card,.student-result,.student-empty {border:1px solid var(--border,#d1d5db);border-radius:16px;padding:20px;background:var(--surface,#fff);}
+.student-session-head {display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.student-session-card h3 {margin:12px 0 6px;}
+.student-empty {text-align:center;padding:40px 20px;grid-column:1/-1;}
+.student-chart {margin:20px 0;max-width:760px;}
+.student-chart svg {display:block;width:100%;height:auto;max-height:250px;}
+.student-result {margin-bottom:12px;}
+.student-result summary {cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.student-result summary small {display:block;margin-top:6px;opacity:.7;}
+.student-result-score {font-weight:800;white-space:nowrap;color:#15803d;}
+.student-result-body {border-top:1px solid var(--border,#d1d5db);margin-top:14px;padding-top:14px;}
+.student-metrics {display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;}
+.student-metrics>div {border-radius:10px;padding:12px;background:var(--surface-alt,#f3f4f6);}
+.student-metrics small {display:block;text-transform:capitalize;opacity:.75;}
+.student-register-progress {display:flex;flex-wrap:wrap;gap:8px;margin:20px 0;}
+.student-register-progress span {padding:8px 10px;border-radius:20px;border:1px solid #a3a3a3;font-size:.85rem;}
+.student-register-progress .active {background:#166534;color:#fff;border-color:#166534;}
+.student-register-actions {display:flex;justify-content:space-between;gap:12px;}
+.student-nav a:focus-visible,.student-result summary:focus-visible,.student-register-actions button:focus-visible {outline:3px solid #15803d;outline-offset:3px;}
+@media(max-width:700px) {.student-menu-toggle {display:inline-flex;margin-bottom:12px;}.student-nav {display:none;position:relative;flex-direction:column;align-items:stretch;}.student-nav.mobile-open {display:flex;}.student-filter-bar select {width:100%;max-width:none;}.student-result summary {align-items:flex-start;}}
+@media(prefers-reduced-motion:reduce){.student-session-card,.student-result {transition:none!important;}}

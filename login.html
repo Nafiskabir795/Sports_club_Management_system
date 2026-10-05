@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Sports Club</title>
+  <!-- Loads an external stylesheet/resource. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Page structure/content element. -->
+  <main class="auth-page">
+    <!-- Page structure/content element. -->
+    <section class="auth-card">
+      <!-- Interactive control/link. -->
+      <a class="back-link" href="index.html">← Back</a>
+      <span class="badge">SECURE LOGIN</span>
+      <!-- Page structure/content element. -->
+      <h1>Welcome back</h1>
+      <!-- Page structure/content element. -->
+      <p class="muted">Use your Student/Coach ID, email, or phone.</p>
+
+      <!-- Defines a form for user input. -->
+      <form id="loginForm">
+        <label for="identifier">ID, Email or Phone</label>
+        <!-- Form control used to collect input. -->
+        <input id="identifier" name="identifier" type="text" required autocomplete="username">
+
+        <label for="password">Password</label>
+        <!-- Form control used to collect input. -->
+        <input id="password" name="password" type="password" required autocomplete="current-password">
+
+        <!-- Interactive control/link. -->
+        <button class="btn primary full" type="submit">Sign In</button>
+        <!-- Page structure/content element. -->
+        <div id="loginMessage" class="message hidden"></div>
+      </form>
+
+      <!-- Page structure/content element. -->
+      <div class="demo-box">
+        <strong>Demo password:</strong> Password123!
+        <small>Use any seeded Student/Coach code, email or phone from the database.</small>
+      </div>
+    </section>
+  </main>
+  <!-- Loads JavaScript for the page. -->
+  <script src="theme.js"></script>
+  <!-- Loads JavaScript for the page. -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Admin Registration - Sports Club</title><link rel="stylesheet" href="style.css"></head><body><main class="auth-page"><section class="auth-card"><a class="back-link" href="index.html">← Back to Home</a><span class="badge">NEW ADMIN / COACH</span><h1>Create an admin account</h1><p class="muted">Register as a coach/admin and choose the sport areas you manage.</p><form id="adminRegistrationForm" class="form-grid registration-form">
+  <!-- Page structure/content element. -->
+  <h3 class="form-section-title">Personal information</h3>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="ar_name">Full Name</label><input id="ar_name" name="name" type="text" maxlength="100" required autocomplete="name"></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="ar_phone">Phone</label><input id="ar_phone" name="phone" type="tel" maxlength="20" required autocomplete="tel"></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="ar_email">Email</label><input id="ar_email" name="email" type="email" maxlength="120" required autocomplete="email"></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="ar_password">Password</label><input id="ar_password" name="password" type="password" minlength="8" required autocomplete="new-password"><small>Minimum 8 characters.</small></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="ar_age">Age</label><input id="ar_age" name="age" type="number" min="18" max="100" required></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="ar_blood">Blood Group</label><select id="ar_blood" name="blood_group" required><option value="">Select</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="ar_experience">Experience (years)</label><input id="ar_experience" name="experience_years" type="number" min="0" max="80" required></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="ar_weight">Weight (kg)</label><input id="ar_weight" name="weight_kg" type="number" min="1" max="500" step="0.1"></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="ar_height">Height (cm)</label><input id="ar_height" name="height_cm" type="number" min="30" max="300" step="0.1"></div>
+  <!-- Page structure/content element. -->
+  <div class="field field-full"><label for="ar_attributes">Physical Attributes <span class="optional">Optional</span></label><textarea id="ar_attributes" name="physical_attributes" rows="4" placeholder="e.g. coaching strengths, experience, or other useful details"></textarea></div>
+  <!-- Page structure/content element. -->
+  <h3 class="form-section-title">Sports managed</h3>
+  <!-- Page structure/content element. -->
+  <div class="form-help"><p class="muted">Select every sport you coach or manage.</p></div>
+  <!-- Page structure/content element. -->
+  <div id="adminSportChoices" class="stack field-full"></div>
+  <!-- Interactive control/link. -->
+  <button class="btn primary full field-full" type="submit">Create Admin Account</button>
+  <!-- Page structure/content element. -->
+  <div id="adminRegistrationMessage" class="message hidden field-full"></div>
+</form></section></main><script src="theme.js"></script><script src="app.js"></script><script>document.addEventListener('DOMContentLoaded',initAdminRegistration);</script></body></html>

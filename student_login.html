@@ -1,0 +1,77 @@
+<!-- Page element explained below. -->
+<!DOCTYPE html>
+<!-- Page element explained below. -->
+<html lang="en">
+ <!-- Page element explained below. -->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+  <title>
+   Student Login - Sports Club
+  </title>
+  <!-- Page element explained below. -->
+  <link href="style.css" rel="stylesheet"/>
+ </head>
+ <!-- Page element explained below. -->
+ <body>
+  <!-- Page element explained below. -->
+  <main class="auth-page">
+   <!-- Page element explained below. -->
+   <section class="auth-card">
+    <!-- Page element explained below. -->
+    <a class="back-link" href="index.html">
+     &larr; Back to Home
+    </a>
+    <span class="badge">
+     STUDENT PORTAL
+    </span>
+    <!-- Page element explained below. -->
+    <h1>
+     Student Sign In
+    </h1>
+    <!-- Page element explained below. -->
+    <p class="muted">
+     Sign in with your Student ID, email, or phone.
+    </p>
+    <!-- Page element explained below. -->
+    <form id="studentLoginForm">
+     <label for="student_identifier">
+      Student ID, Email or Phone
+     </label>
+     <!-- Page element explained below. -->
+     <input autocomplete="username" id="student_identifier" required="" type="text"/>
+     <label for="student_password">
+      Password
+     </label>
+     <!-- Page element explained below. -->
+     <input autocomplete="current-password" id="student_password" required="" type="password"/>
+     <!-- Page element explained below. -->
+     <button class="btn primary full" type="submit">
+      Sign In as Student
+     </button>
+     <!-- Page element explained below. -->
+     <div class="message hidden" id="studentLoginMessage">
+     </div>
+    </form>
+    <!-- Page element explained below. -->
+    <p class="auth-switch">
+     New student?
+     <!-- Page element explained below. -->
+     <a href="student_register.html">
+      Create a student account &rarr;
+     </a>
+    </p>
+   </section>
+  </main>
+  <!-- Page element explained below. -->
+  <script src="theme.js">
+  </script>
+  <!-- Page element explained below. -->
+  <script src="app.js">
+  </script>
+  <!-- Page element explained below. -->
+  <script>
+   document.addEventListener('DOMContentLoaded',initStudentLogin);
+  </script>
+ </body>
+</html>

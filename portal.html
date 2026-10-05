@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sport Portal</title>
+  <!-- Loads an external stylesheet/resource. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Page structure/content element. -->
+  <header class="topbar">
+    <!-- Interactive control/link. -->
+    <a class="brand" href="portal.html"><span class="brand-mark">SC</span><span class="brand-word">SPORTS CLUB</span></a>
+    <!-- Page structure/content element. -->
+    <div class="top-actions">
+      <span id="welcomeName"></span>
+      <!-- Interactive control/link. -->
+      <button class="btn small" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Page structure/content element. -->
+  <main class="container">
+    <!-- Page structure/content element. -->
+    <section class="page-heading">
+      <span class="eyebrow">MEMBER PORTAL</span>
+      <!-- Page structure/content element. -->
+      <h1>CHOOSE YOUR SPORT</h1>
+      <!-- Page structure/content element. -->
+      <p class="portal-subtitle">Your registered sport is unlocked. Other sports are visible but restricted.</p>
+    </section>
+
+    <!-- Page structure/content element. -->
+    <div id="portalSports" class="card-grid"></div>
+    <!-- Page structure/content element. -->
+    <div id="portalMessage" class="message hidden"></div>
+  </main>
+
+  <!-- Loads JavaScript for the page. -->
+  <script src="theme.js"></script>
+  <!-- Loads JavaScript for the page. -->
+  <script src="app.js"></script>
+  <!-- Loads JavaScript for the page. -->
+  <script>
+    document.addEventListener('DOMContentLoaded', initPortal);
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>New Student Registration - Sports Club</title><link rel="stylesheet" href="style.css"></head><body><main class="auth-page"><section class="auth-card"><a class="back-link" href="index.html">← Back to Home</a><span class="badge">NEW STUDENT</span><h1>Create your student account</h1><p class="muted">Enter your information, choose one or more sports, and select a position for each sport.</p><div class="student-register-progress" aria-label="Registration progress"><span class="active">1 · Account</span><span>2 · Details</span><span>3 · Sports</span><span>4 · Review</span></div><form id="studentRegistrationForm" class="form-grid registration-form" novalidate>
+  <!-- Page structure/content element. -->
+  <h3 class="form-section-title">Personal information</h3>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="sr_name">Full Name</label><input id="sr_name" name="name" type="text" maxlength="100" required autocomplete="name"></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="sr_phone">Phone</label><input id="sr_phone" name="phone" type="tel" maxlength="20" required autocomplete="tel"></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="sr_email">Email</label><input id="sr_email" name="email" type="email" maxlength="120" required autocomplete="email"></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="sr_password">Password</label><input id="sr_password" name="password" type="password" minlength="8" required autocomplete="new-password"><small>Minimum 8 characters.</small></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="sr_age">Age</label><input id="sr_age" name="age" type="number" min="5" max="100" required></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="sr_blood">Blood Group</label><select id="sr_blood" name="blood_group" required><option value="">Select</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="sr_weight">Weight (kg)</label><input id="sr_weight" name="weight_kg" type="number" min="1" max="500" step="0.1"></div>
+  <!-- Page structure/content element. -->
+  <div class="field"><label for="sr_height">Height (cm)</label><input id="sr_height" name="height_cm" type="number" min="30" max="300" step="0.1"></div>
+  <!-- Page structure/content element. -->
+  <div class="field field-full"><label for="sr_attributes">Physical Attributes <span class="optional">Optional</span></label><textarea id="sr_attributes" name="physical_attributes" rows="4" placeholder="e.g. preferred playing style, strengths, or other useful details"></textarea></div>
+  <!-- Page structure/content element. -->
+  <h3 class="form-section-title">Sport selection</h3>
+  <!-- Page structure/content element. -->
+  <div class="form-help"><p class="muted">Select every sport you want. A position selector will appear for each selected sport.</p></div>
+  <!-- Page structure/content element. -->
+  <div id="studentSportChoices" class="stack field-full"></div>
+  <!-- Interactive control/link. -->
+  <div id="studentRegistrationReview" class="field-full hidden" aria-live="polite"></div><div class="field-full student-register-actions"><button id="studentRegisterBack" class="btn" type="button" hidden>Back</button><button id="studentRegisterNext" class="btn primary" type="button">Continue</button><button id="studentRegisterSubmit" class="btn primary" type="submit" hidden>Create Student Account</button></div>
+  <!-- Page structure/content element. -->
+  <div id="studentRegistrationMessage" class="message hidden field-full"></div>
+</form></section></main><script src="theme.js"></script><script src="app.js"></script><script src="student-v5.js"></script><script>document.addEventListener('DOMContentLoaded',initStudentRegistration);</script></body></html>
